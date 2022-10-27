@@ -1,6 +1,6 @@
 ---
 title: "Neil Birrell"
-description:
+#description:
 page-layout: full
 image: /images/NeilBirrell.png
 resources:
@@ -9,11 +9,13 @@ resources:
 
 ::: {.column-page-inset}
 ::: {.column-page-inset-left}
-Kia ora - I've been interested in the natural world since I was a kid, turning over rocks and growing tadpoles in jars. Eventually this led into studying biology at the University of Auckland in Aotearoa New Zealand. I'm now a PhD candidate in the Holwell Lab. My interests are quite diverse and encompass entomology, insects as food and feed, taxonomy, sexual selection and developmental plasticity. 
+Kia ora! 
+
+I've been interested in the natural world and natural history since an early age which led me into studying biology.My interests are quite diverse and encompass entomology, insects as food and feed, taxonomy, sexual selection and developmental plasticity. I'm now a PhD candidate in the Holwell Lab at the University of Auckland in Aotearoa New Zealand.
 
 My masters thesis investigated allometry in sexually selected traits of *Hermetia illucens*, the black soldier fly. My PhD thesis is investigating insects as food in Aoteroa and focuses on public perceptions of insects as food, the reproductive biology of an endemic cerambycid beetle, *Prionoplus reticularis*, and sexually selected traits in scramble competition.
 
-I have also dabbled in entrepreneurship, starting a company called Hexacycle which set up black soldier fly waste processing plants in Kerala, India. They process 3 tonnes of organic waste a day producing insect protein for use in poultry and pet feeds.
+I have also dabbled in entrepreneurship, starting a company called Hexacycle which set up black soldier fly waste processing plants in Kerala, India. Processing up to 3 tonnes of organic waste a day, the plants are producing insect protein for use in poultry and pet feeds.
 
 :::
 <div class="column-margin column-container">
