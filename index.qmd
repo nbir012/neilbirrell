@@ -1,11 +1,44 @@
 ---
-title: "neilbirrell"
+title: "Neil Birrell"
+description:
+page-layout: full
+image: /images/NeilBirrell.png
+resources:
+    - "NeilBirrell.png"
 ---
 
-This is a Quarto website.
+::: {.column-page-inset}
+::: {.column-page-inset-left}
+Kia ora - I've been interested in the natural world since I was a kid, turning over rocks and growing tadpoles in jars. Eventually this led into studying biology at the University of Auckland in Aotearoa New Zealand. I'm now a PhD candidate in the Holwell Lab. My interests are quite diverse and encompass entomology, insects as food and feed, taxonomy, sexual selection and developmental plasticity. 
 
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
+My masters thesis investigated allometry in sexually selected traits of *Hermetia illucens*, the black soldier fly. My PhD thesis is investigating insects as food in Aoteroa and focuses on public perceptions of insects as food, the reproductive biology of an endemic cerambycid beetle, *Prionoplus reticularis*, and sexually selected traits in scramble competition.
 
-```{r}
-1 + 1
+I have also dabbled in entrepreneurship, starting a company called Hexacycle which set up black soldier fly waste processing plants in Kerala, India. They process 3 tonnes of organic waste a day producing insect protein for use in poultry and pet feeds.
+
+:::
+<div class="column-margin column-container">
+![](/images/NeilBirrell.png){.rounded}
+</div>
+:::
+
+{{< pagebreak >}}
+
+::: {.column-page-inset .text-center}
+```{=html}
+<a class="btn btn-outline-dark", href="https://github.com/nbir012" target="_blank" rel="noopener noreferrer">
+    <i class="bi bi-github" role='img' aria-label='Github'></i>
+</a>
+<a class="btn btn-outline-dark", href="https://www.linkedin.com/in/neilbirrell/" target="_blank" rel="noopener noreferrer">
+    <i class="bi bi-linkedin" role='img' aria-label='LinkedIn'></i>
+</a>
+<a class="btn btn-outline-dark", href="https://scholar.google.com/citations?hl=en&user=tg-YRR4AAAAJ" target="_blank" rel="noopener noreferrer">
+    <i class="ai ai-google-scholar" role='img' aria-label='Google Scholar'></i>
+</a>
+<a class="btn btn-outline-dark", href="https://orcid.org/0000-0002-7961-1626" target="_blank" rel="noopener noreferrer">
+    <i class="ai ai-orcid" role='img' aria-label='orcid'></i>
+</a>
+<a class="btn btn-outline-dark", href="mailto:neil.birrell@gmail.com" target="_blank" rel="noopener noreferrer">
+    <i class="ai bi-envelope" role='img' aria-label='email'></i>
+</a>
 ```
+:::
