@@ -12,7 +12,7 @@ website:
   open-graph: true
   twitter-card: true
   favicon: images/favicon.ico
-  google-analytics: G-L3HC3XYXTE
+  google-analytics: "G-L3HC3XYXTE"
 
 format:
   html:
