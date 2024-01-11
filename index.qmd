@@ -3,10 +3,10 @@ title: "Neil Birrell"
 #description:
 page-layout: full
 image: /images/photo_Neil.jpeg
+image-alt: "Portrait photo of the Neil against a tree possibly featuring climbing rata"
 about:
     template: trestles
     image-shape: rounded
-    
 ---
 
 ### Kia ora!
