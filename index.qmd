@@ -7,6 +7,17 @@ image-alt: "Portrait photo of the Neil against a tree possibly featuring climbin
 about:
     template: trestles
     image-shape: rounded
+    links:
+    - icon: github
+      href: https://github.com/nbir012
+    - text: "{{< iconify fa6-brands linkedin-in >}}"
+      href: https://www.linkedin.com/in/neilbirrell/
+    - text: "{{< iconify fa6-brands google-scholar >}}"
+      href: https://scholar.google.com/citations?hl=en&user=tg-YRR4AAAAJ
+    - text: "{{< iconify fa6-brands orcid >}}"
+      href: https://orcid.org/0000-0002-7961-1626
+    - text: "{{< iconify fa6-solid envelope >}}"
+      
 ---
 
 ### Kia ora!
@@ -34,25 +45,3 @@ My PhD thesis investigated insects as food in Aotearoa and focused on past and p
 I am an active member of the Entomological Society of New Zealand and have been on the committee since 2018. I am currently an officer on the executive committee and was previously co-treasurer. During my studies, I was also actively involved with the early career research group of Te Pūnaha Matatini, [TPM Whānau](https://www.tepunahamatatini.ac.nz/our%20team/tpm-whanau/), where I held a variety of roles including Chair in 2022.
 
 ------------------------------------------------------
-
-
-::: {.column-page-inset .text-center}
-```{=html}
-<a class="btn btn-outline-dark", href="https://github.com/nbir012" target="_blank" rel="noopener noreferrer">
-    <i class="bi bi-github" role='img' aria-label='Github' fill="pink"></i>
-</a>
-<a class="btn btn-outline-dark", href="https://www.linkedin.com/in/neilbirrell/" target="_blank" rel="noopener noreferrer">
-    <i class="bi bi-linkedin" role='img' aria-label='LinkedIn'></i>
-</a>
-<a class="btn btn-outline-dark", href="https://scholar.google.com/citations?hl=en&user=tg-YRR4AAAAJ" target="_blank" rel="noopener noreferrer">
-    <i class="ai ai-google-scholar" role='img' aria-label='Google Scholar'></i>
-</a>
-<a class="btn btn-outline-dark", href="https://orcid.org/0000-0002-7961-1626" target="_blank" rel="noopener noreferrer">
-    <i class="ai ai-orcid" role='img' aria-label='orcid'></i>
-</a>
-<a class="btn btn-outline-dark", href="mailto:neil.birrell@gmail.com" target="_blank" rel="noopener noreferrer">
-    <i class="ai bi-envelope" role='img' aria-label='email'></i>
-</a>
-```
-:::
-
