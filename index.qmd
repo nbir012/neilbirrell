@@ -2,33 +2,44 @@
 title: "Neil Birrell"
 #description:
 page-layout: full
-image: /images/NeilBirrell.png
-resources:
-    - "NeilBirrell.png"
+image: /images/photo_Neil.jpeg
+about:
+    template: trestles
+    image-shape: rounded
+    
 ---
 
-::: {.column-page-inset}
-::: {.column-page-inset-left}
-Kia ora! 
+### Kia ora!
 
-I've been interested in the natural world and natural history since an early age which led me into studying biology. My interests are quite diverse and encompass entomology, insects as food and feed, taxonomy, sexual selection and developmental plasticity. I'm now a PhD candidate in the Holwell Lab at the University of Auckland in Aotearoa New Zealand.
+I've been interested in the natural world and natural history since an early age which led me into studying biology. My interests are quite diverse and encompass entomology, insects as food and feed, society's perceptions of insects, taxonomy, sexual selection and developmental plasticity. I'm a PhD candidate in the Holwell Lab at the University of Auckland in Aotearoa New Zealand.
 
-My masters thesis investigated allometry in sexually selected traits of *Hermetia illucens*, the black soldier fly. My PhD thesis is investigating insects as food in Aoteroa and focuses on public perceptions of insects as food, the reproductive biology of an endemic cerambycid beetle, *Prionoplus reticularis*, and sexually selected traits in scramble competition.
+During my masters, I have also dabbled in entrepreneurship, starting a company called Hexacycle which set up several black soldier fly waste processing plants in Kerala, India. Prior to COVID, these plants processed up to 3 tonnes of organic waste a day, converting it into insect biomass from which the protein is extracted for use in poultry and pet feeds, along with frass (insect poo & left over substrate) which is used as a fertiliser.
 
-I have also dabbled in entrepreneurship, starting a company called Hexacycle which set up black soldier fly waste processing plants in Kerala, India. Processing up to 3 tonnes of organic waste a day, the plants are producing insect protein for use in poultry and pet feeds.
+When I am not working, I enjoy multi-day hikes particularly to back country huts which Aotearoa has in abundance. I also enjoy iNat-ing. 
 
-:::
-<div class="column-margin column-container">
-![](/images/NeilBirrell.png){.rounded}
-</div>
-:::
+------------------------------------------------------
 
-{{< pagebreak >}}
+### Education
+
+In November 2023, I submitted my doctoral thesis and am awaiting examination. I completed my masters in 2018 and my bachelors in 2013.
+
+My masters thesis investigated allometry and developmental plasticity in sexually selected traits of *Hermetia illucens*, the black soldier fly. 
+
+My PhD thesis investigated insects as food in Aotearoa and focused on past and present use of insects as food, public perceptions of insects as food, metabolomic fingerprinting of an endemic edible cerambycid beetle, *Prionoplus reticularis*. I also investigated the beetles’ scramble competition mating system, and, using static allometry and home-made flight mills (COVID lock-down project), I found evidence of the interplay of sexual selection and stabilising selection on traits associated with male fitness in this species. I also found evidence of sexual dimorphism, indicating the importance of female chemical cues to male mate searching. Using scanning electron microscopy, I investigated the antennal ultrastructure of male and female P. reticularis, describing unique, sexually dimorphic sensilla in this species providing further evidence of the importance of these chemical cues.
+
+------------------------------------------------------
+
+### Volunteer Work
+
+I am an active member of the Entomological Society of New Zealand and have been on the committee since 2018. I am currently an officer on the executive committee and was previously co-treasurer. During my studies, I was also actively involved with the early career research group of Te Pūnaha Matatini, [TPM Whānau](https://www.tepunahamatatini.ac.nz/our%20team/tpm-whanau/), where I held a variety of roles including Chair in 2022.
+
+------------------------------------------------------
+
 
 ::: {.column-page-inset .text-center}
 ```{=html}
 <a class="btn btn-outline-dark", href="https://github.com/nbir012" target="_blank" rel="noopener noreferrer">
-    <i class="bi bi-github" role='img' aria-label='Github'></i>
+    <i class="bi bi-github" role='img' aria-label='Github' fill="pink"></i>
 </a>
 <a class="btn btn-outline-dark", href="https://www.linkedin.com/in/neilbirrell/" target="_blank" rel="noopener noreferrer">
     <i class="bi bi-linkedin" role='img' aria-label='LinkedIn'></i>
@@ -44,3 +55,4 @@ I have also dabbled in entrepreneurship, starting a company called Hexacycle whi
 </a>
 ```
 :::
+
