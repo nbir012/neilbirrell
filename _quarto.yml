@@ -3,11 +3,12 @@ project:
   output-dir: _site
 
 website:
-  title: "neilbirrell"
+  title: "neil birrell"
   navbar:
     left:
       - href: index.qmd
         text: Home
+      - posts.qmd
 #      - about.qmd
   open-graph: true
   twitter-card: true
