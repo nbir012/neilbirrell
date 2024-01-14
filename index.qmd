@@ -16,7 +16,8 @@ about:
       href: https://scholar.google.com/citations?hl=en&user=tg-YRR4AAAAJ
     - text: "{{< iconify fa6-brands orcid >}}"
       href: https://orcid.org/0000-0002-7961-1626
-#    - text: "{{< iconify fa6-solid envelope >}}"
+    - text: "{{< iconify fa6-solid envelope >}}"
+      href: mailto:neil.birrell@gmail.com
       
 ---
 
