@@ -1,0 +1,24 @@
+---
+title: "Kerala Project Plant"
+description: "Originally on hexacycle.co.nz, here is a brief overview of starting a black soldier fly plant in Kerala, India"
+author:
+  - name: Neil Birrell
+    url: https://neilbirrell.com
+    orcid: 0000-0002-7961-1626
+    affiliation: PhD Candidate, University of Auckland
+    affiliation-url: https://profiles.auckland.ac.nz/n-birrell/about 
+date: 22-01-2024
+categories: [BSF, New Zealand] # self-defined categories
+citation: 
+  url: https://neilbirrell.com/posts/2024_01_22_bsf_at_home/ 
+image: bsfMaleFemale@0.25x.png
+draft: true # setting this to `true` will prevent your post from appearing on your listing page until you're ready!
+---
+
+# Can I grow black soldier fly at home to feed my chickens, pets, process food waste?
+
+I get asked this question quite frequently and the answer is yes, but it is not as simple as it sounds.
+
+# The biology of the black soldier fly?
+
+The black soldier fly is a member of the 

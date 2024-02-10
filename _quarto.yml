@@ -6,6 +6,7 @@ website:
   title: "neil birrell"
   site-url: 'https://neilbirrell.com'
   site-path: '/'
+  description: "neil birrell's personal blog"
   navbar:
     left:
       - href: index.qmd
