@@ -3,7 +3,7 @@ title: "Neil Birrell"
 #description:
 page-layout: full
 image: /images/photo_Neil.jpeg
-image-alt: "Portrait photo of the Neil against a tree possibly featuring climbing rata"
+image-alt: "Neil Birrell New Zealand Entomologist"
 about:
     template: trestles
     image-shape: rounded
