@@ -4,6 +4,8 @@ project:
 
 website:
   title: "neil birrell"
+  site-url: 'https://neilbirrell.com'
+  site-path: '/'
   navbar:
     left:
       - href: index.qmd
