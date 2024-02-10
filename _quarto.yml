@@ -13,6 +13,9 @@ website:
         text: Home
       - posts.qmd
 #      - about.qmd
+    right:
+      - icon: rss
+        href: index.xml
   open-graph: true
   twitter-card: true
   favicon: images/favicon.ico

@@ -18,7 +18,7 @@ about:
       href: https://orcid.org/0000-0002-7961-1626
     - text: "{{< iconify fa6-solid envelope >}}"
       href: mailto:neil.birrell@gmail.com
-      
+    
 ---
 
 ### Kia ora!
