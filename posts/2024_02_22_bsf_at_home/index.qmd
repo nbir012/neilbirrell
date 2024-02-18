@@ -15,14 +15,12 @@ image: bsfMaleFemale@0.25x.png
 draft: true # setting this to `true` will prevent your post from appearing on your listing page until you're ready!
 ---
 
-```{r setup, include=FALSE}
+```{r setup, include=FALSE, message=FALSE}
 library(dplyr)
 library(leaflet)
 ```
 
-
-
-```{r bsfMap, echo=FALSE}
+```{r bsfData, echo=FALSE}
 
 bsf_obs <- rinat::get_inat_obs(
   taxon_name = "Hermetia illucens",
@@ -47,7 +45,7 @@ I get asked this question quite frequently and the answer is yes, but it is not 
 
 The black soldier fly originates from the Americas, first described by Linaeus in 1758. It is now very cosmopolitan, found across the world. In New Zealand, it is found in the North Island and the top of the South Island
 
-```{r}
+```{r bsfMap, echo=FALSE}
 leaflet() %>%
   addProviderTiles(providers$Stadia.StamenWatercolor) %>% 
   addCircles(lng=bsf_obs_latlon$longitude, lat=bsf_obs_latlon$latitude)
