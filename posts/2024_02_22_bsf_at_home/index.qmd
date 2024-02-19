@@ -18,6 +18,8 @@ draft: true # setting this to `true` will prevent your post from appearing on yo
 ```{r setup, include=FALSE, message=FALSE}
 library(dplyr)
 library(leaflet)
+library(ggplot2)
+library(dplyr)
 ```
 
 ```{r bsfData, echo=FALSE}
@@ -39,15 +41,36 @@ bsf_obs_latlon <- bsf_obs %>%
 
 # Can I grow black soldier fly at home to feed my chickens, pets, process food waste?
 
-I get asked this question quite frequently and the answer is yes, but it is not as simple as it sounds.
+I get asked this question quite frequently and the short answer is yes, but to get a year round supply is challenging and costly. If your aim is to supplement the diet of pets, I would consider alternative insects such as crickets or mealworms. These are much easier to rear, have simpler environmental requirements, and have plenty of online guides available. 
+
+Before we get into some of the methods people have used to rear black soldier fly at home, let's first understand the natural history of the black soldier fly.
 
 # Where is the black soldier fly from?
 
-The black soldier fly originates from the Americas, first described by Linaeus in 1758. It is now very cosmopolitan, found across the world. In New Zealand, it is found in the North Island and the top of the South Island
+The black soldier fly originates from the Americas, first described by Linaeus in 1758. It's natural habitat is warm and humid allowing for several generations per year. At the boundaries of its range, the black soldier fly is known to overwinter in the pupal stage. In these areas it is likely that there is only one generation per year.
+
+It is now very cosmopolitan, found across the world. The species was first observed and collected in Auckland in 1956 and since then the adult flies have been observed in the North Island and the top of the South Island.
 
 ```{r bsfMap, echo=FALSE}
 leaflet() %>%
-  addProviderTiles(providers$Stadia.StamenWatercolor) %>% 
-  addCircles(lng=bsf_obs_latlon$longitude, lat=bsf_obs_latlon$latitude)
+  addProviderTiles(providers$Stadia) %>% 
+  addCircles(lng=bsf_obs_latlon$longitude, lat=bsf_obs_latlon$latitude, color = "purple")
+```
+
+```{r phenology, echo=FALSE}
+bsf_obs %>% 
+  select(observed_on) %>% 
+  mutate(lubridate::ymd(observed_on),
+         year = lubridate::year(observed_on),
+         month = lubridate::month(observed_on, label = TRUE),
+         day = lubridate::day(observed_on)) %>% 
+  group_by(month) %>% 
+  summarise(n = n()) %>% 
+  tidyr::complete(month) %>% 
+  mutate(across(everything(), .fns = ~tidyr::replace_na(.,0))) %>% 
+  ggplot(aes(x = month, y = n)) +
+  geom_bar(stat="identity", fill = "darkorchid4") +
+  theme_classic()
+
 ```
 
