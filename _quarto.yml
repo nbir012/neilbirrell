@@ -13,6 +13,7 @@ website:
         text: Home
       - posts.qmd
 #      - about.qmd
+      - media.qmd
     right:
       - icon: rss
         href: index.xml
