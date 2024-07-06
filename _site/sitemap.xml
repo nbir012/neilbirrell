@@ -2,10 +2,22 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://neilbirrell.com/index.html</loc>
-    <lastmod>2024-02-10T06:30:17.561Z</lastmod>
+    <lastmod>2024-07-06T04:37:28.313Z</lastmod>
   </url>
   <url>
     <loc>https://neilbirrell.com/posts.html</loc>
     <lastmod>2024-02-10T06:15:43.852Z</lastmod>
+  </url>
+  <url>
+    <loc>https://neilbirrell.com/blog/index.html</loc>
+    <lastmod>2024-06-27T04:11:21.332Z</lastmod>
+  </url>
+  <url>
+    <loc>https://neilbirrell.com/media/index.html</loc>
+    <lastmod>2024-07-06T04:34:29.937Z</lastmod>
+  </url>
+  <url>
+    <loc>https://neilbirrell.com/about/index.html</loc>
+    <lastmod>2024-07-06T02:49:06.943Z</lastmod>
   </url>
 </urlset>
