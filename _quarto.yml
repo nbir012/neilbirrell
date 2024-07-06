@@ -3,31 +3,43 @@ project:
   output-dir: _site
 
 website:
-  title: "neil birrell"
+  title: "Neil Birrell"
   site-url: 'https://neilbirrell.com'
   site-path: '/'
-  description: "neil birrell's personal blog"
+  description: "Biologist and entomologist interested in the less fluffy animals"
   navbar:
     left:
-      - href: index.qmd
-        text: Home
-      - posts.qmd
-#      - about.qmd
-      - media.qmd
+      - text: Home
+        aria-label: "Home page"
+        href: index.qmd
+      - text: Blog
+        aria-label: "Blog posts"
+        href: blog/index.qmd
+      - text: Media
+        aria-label: "Media appearances"
+        href: media/index.qmd      
+      - text: About 
+        aria-label: "About Me"
+        href: about/index.qmd
+
     right:
       - icon: rss
         href: index.xml
   open-graph: true
   twitter-card: true
   favicon: images/favicon.ico
+  
+  page-footer:  
+    left: >-
+     <p xmlns:cc="http://creativecommons.org/ns#" >This work is licensed under <a href="https://creativecommons.org/licenses/by/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">CC BY 4.0<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" alt=""></a> &#8763; Made with [Quarto](https://quarto.org)</p>
 
 format:
   html:
-    theme:
-      light: flatly
-      dark: darkly
+    theme: solar
+#      light: flatly
+#      dark: darkly
     css: styles.css
-    toc: true
+    toc: false
     include-in-header:
       - includes.html
 

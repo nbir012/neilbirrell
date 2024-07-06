@@ -1,1 +1,36 @@
 /* css styles */
+.parallax-container {
+  position: relative;
+}
+
+.parallax-image-container {
+  background-image: url(/images/huhuFemale@0.25x.jpg);
+  height: 200px;
+  background-attachment: fixed;
+  opacity: 1;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* css styles */
+.parallax-container {
+  position: relative;
+}
+
+.parallax-image-container {
+  height: 200px;
+  background-attachment: fixed;
+  opacity: 1;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.parallax-image-container.image1 {
+  background-image: url(/images/huhuFemale@0.25x.jpg); /* Replace with your first image path */
+}
+
+.parallax-image-container.image2 {
+  background-image: url(/images/loch_maree@0.25x.jpg); /* Replace with your second image path */
+}

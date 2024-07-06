@@ -1,48 +1,25 @@
 ---
-title: "Neil Birrell"
+#title: "Kia ora!"
+#pagetitle: "Neil Birrell"
+#subtitle: "I’m Neil."
 #description:
 page-layout: full
-image: /images/photo_Neil.jpeg
-image-alt: "Neil Birrell New Zealand Entomologist"
+image: /images/huhuFemale@0.25x.jpg
+image-alt: "a macro image of a female huhu beetle"
+css: style.css
+#title-block-banner: "#00000000"
+#title-block-banner-color: "rgba(255, 255, 255, 0.9)"
+#https://github.com/quarto-dev/quarto-cli/discussions/1986
 about:
     template: trestles
     image-shape: rounded
-    links:
-    - icon: github
-      href: https://github.com/nbir012
-    - text: "{{< iconify fa6-brands linkedin-in >}}"
-      href: https://www.linkedin.com/in/neilbirrell/
-    - text: "{{< iconify fa6-brands google-scholar >}}"
-      href: https://scholar.google.com/citations?hl=en&user=tg-YRR4AAAAJ
-    - text: "{{< iconify fa6-brands orcid >}}"
-      href: https://orcid.org/0000-0002-7961-1626
-    - text: "{{< iconify fa6-solid envelope >}}"
-      href: mailto:neil.birrell@gmail.com
     
 ---
 
-### Kia ora!
+Thanks for popping by. 
 
-I've been interested in the natural world and natural history since an early age which led me into studying biology. My interests are quite diverse and encompass entomology, insects as food and feed, society's perceptions of insects, taxonomy, sexual selection and developmental plasticity. I'm a PhD candidate in the [Holwell Lab](https://gregholwell.com/) at the University of Auckland in Aotearoa New Zealand.
+I'm Neil and I spend a lot of time looking at interesting invertebrates or analysing data. 
 
-During my masters, I have also dabbled in entrepreneurship, starting a company called Hexacycle which set up several black soldier fly waste processing plants in Kerala, India. Prior to COVID, these plants processed up to 3 tonnes of organic waste a day, converting it into insect biomass from which the protein is extracted for use in poultry and pet feeds, along with frass (insect poo & left over substrate) which is used as a fertiliser.
+This website is somewhere for me to blog and share what I have learned. 
 
-When I am not working, I enjoy multi-day hikes particularly to back country huts which Aotearoa has in abundance. I also enjoy iNat-ing. 
-
-------------------------------------------------------
-
-### Education
-
-In November 2023, I submitted my doctoral thesis and am awaiting examination. I completed my masters in 2018 and my bachelors in 2013.
-
-My masters thesis investigated allometry and developmental plasticity in sexually selected traits of *Hermetia illucens*, the black soldier fly. 
-
-My PhD thesis investigated insects as food in Aotearoa and focused on past and present use of insects as food, public perceptions of insects as food, metabolomic fingerprinting of an endemic edible cerambycid beetle, *Prionoplus reticularis*. I also investigated the beetles’ scramble competition mating system, and, using static allometry and home-made flight mills (COVID lock-down project), I found evidence of the interplay of sexual selection and stabilising selection on traits associated with male fitness in this species. I also found evidence of sexual dimorphism, indicating the importance of female chemical cues to male mate searching. Using scanning electron microscopy, I investigated the antennal ultrastructure of male and female *P. reticularis*, describing unique, sexually dimorphic sensilla in this species providing further evidence of the importance of these chemical cues.
-
-------------------------------------------------------
-
-### Volunteer Work
-
-I am an active member of the Entomological Society of New Zealand and have been on the committee since 2018. I am currently an officer on the executive committee and was previously co-treasurer. During my studies, I was also actively involved with the early career research group of Te Pūnaha Matatini, [TPM Whānau](https://www.tepunahamatatini.ac.nz/our%20team/tpm-whanau/), where I held a variety of roles including Chair in 2022. TPM Whānau is a group of early career researchers from across Aotearoa New Zealand who are interested in complex systems science.
-
-------------------------------------------------------
+[You can learn more about me here &#8611;](/about){.about-links .subtitle}
