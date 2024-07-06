@@ -25,16 +25,17 @@ draft: false # setting this to `true` will prevent your post from appearing on y
 
 My [masters](http://hdl.handle.net/2292/37256) thesis investigated allometry and developmental plasticity in sexually selected traits of *Hermetia illucens*, the black soldier fly. I completed my masters in 2018.
 
-My doctoral thesis, “[Insects as Food in Aotearoa New Zealand](https://hdl.handle.net/2292/68121)" focused on past and present use of insects as food, public perceptions of insects as food, metabolomic fingerprinting of an endemic edible cerambycid beetle, *Prionoplus reticularis*. I also investigated the beetles’ scramble competition mating system, and, using static allometry and home-made flight mills (COVID lock-down project), I found evidence of the interplay of sexual selection and stabilising selection on traits associated with male fitness in this species. I also found evidence of sexual dimorphism, indicating the importance of female chemical cues to male mate searching. Using scanning electron microscopy, I investigated the antennal ultrastructure of male and female *P. reticularis*, describing unique, sexually dimorphic sensilla in this species providing further evidence of the importance of these chemical cues. In March 2024, I defended my doctoral thesis. 
+My doctoral thesis, “[Insects as Food in Aotearoa New Zealand](https://hdl.handle.net/2292/68121)" focused on past and present use of insects as food, public perceptions of insects as food, metabolomic fingerprinting of an endemic edible cerambycid beetle, *Prionoplus reticularis*. I also investigated the beetles’ scramble competition mating system, and, using static allometry and home-made flight mills (COVID lock-down project), I found evidence of the interplay of sexual selection and stabilising selection on traits associated with male fitness in this species. I also found evidence of sexual dimorphism, indicating the importance of female chemical cues to male mate searching. Using scanning electron microscopy, I investigated the antennal ultrastructure of male and female *P. reticularis*, describing unique, sexually dimorphic sensilla in this species providing further evidence of the importance of these chemical cues. In March 2024, I defended my doctoral thesis.
 
-------------------------------------------------------
+------------------------------------------------------------------------
 
 ### Business
-During my Masters, I ventured into entrepreneurship and founded Hexacycle. The company established several black soldier fly waste processing plants in Kerala, India. These plants processed up to 3 tonnes of organic waste daily. This waste was converted into insect biomass, from which protein was extracted for use in poultry and pet feeds. The remaining frass (insect poo and leftover substrate) is used as a fertiliser. 
 
-Today, I enjoy research and academia but still provide advice to companies, organisations and individuals interested in using insects as food or feed both in New Zealand and globally. 
+During my Masters, I ventured into entrepreneurship and founded Hexacycle. The company established several black soldier fly waste processing plants in Kerala, India. These plants processed up to 3 tonnes of organic waste daily. This waste was converted into insect biomass, from which protein was extracted for use in poultry and pet feeds. The remaining frass (insect poo and leftover substrate) is used as a fertiliser.
 
-------------------------------------------------------
+Today, I enjoy research and academia but still provide advice to companies, organisations and individuals interested in using insects as food or feed both in New Zealand and globally.
+
+------------------------------------------------------------------------
 
 ### Service
 
@@ -44,9 +45,12 @@ I have also volunteered for Ark in the Park, a conservation project in the Wait�
 
 I often get asked to visit schools and talk about insects and science in general - feel free to get in touch if you would like me to visit your class.
 
-------------------------------------------------------
+------------------------------------------------------------------------
 
 ### What I do for fun
 
 Outside of work, I’m an avid hiker and enjoy multi-day hikes, especially to the many beautiful back country huts that Aotearoa has to offer. I also love using iNaturalist in my free time to record some of the interesting critters I see. My partner and I also have a mercurial border collie named Rimu.
-------------------------------------------------------
+
+![](/images/rimu@0.25x.jpg){fig-align="center"}
+
+------------------------------------------------------------------------
