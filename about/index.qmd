@@ -23,7 +23,7 @@ draft: false # setting this to `true` will prevent your post from appearing on y
 
 ### Education
 
-My [Masters](http://hdl.handle.net/2292/37256) thesis investigated allometry and developmental plasticity in sexually selected traits of *Hermetia illucens*, the black soldier fly. I completed my masters in 2018.
+My [masters](http://hdl.handle.net/2292/37256) thesis investigated allometry and developmental plasticity in sexually selected traits of *Hermetia illucens*, the black soldier fly. I completed my masters in 2018.
 
 My doctoral thesis, “[Insects as Food in Aotearoa New Zealand](https://hdl.handle.net/2292/68121)" focused on past and present use of insects as food, public perceptions of insects as food, metabolomic fingerprinting of an endemic edible cerambycid beetle, *Prionoplus reticularis*. I also investigated the beetles’ scramble competition mating system, and, using static allometry and home-made flight mills (COVID lock-down project), I found evidence of the interplay of sexual selection and stabilising selection on traits associated with male fitness in this species. I also found evidence of sexual dimorphism, indicating the importance of female chemical cues to male mate searching. Using scanning electron microscopy, I investigated the antennal ultrastructure of male and female *P. reticularis*, describing unique, sexually dimorphic sensilla in this species providing further evidence of the importance of these chemical cues. In March 2024, I defended my doctoral thesis. 
 
