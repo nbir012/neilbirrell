@@ -1,0 +1,21 @@
+---
+title: "Growing black soldier fly at home"
+description: "Is it possible to grow black soldier fly at home?"
+author:
+  - name: Neil Birrell
+    url: https://neilbirrell.com
+    orcid: 0000-0002-7961-1626
+    affiliation: PhD Candidate, University of Auckland
+    affiliation-url: https://profiles.auckland.ac.nz/n-birrell/about 
+date: 22-01-2024
+categories: [BSF, New Zealand] # self-defined categories
+citation: 
+  url: https://neilbirrell.com/posts/2024_01_22_bsf_at_home/ 
+image: bsfMaleFemale@0.25x.png
+draft: true # setting this to `true` will prevent your post from appearing on your listing page until you're ready!
+---
+
+# Can I grow black soldier fly at home to feed my chickens, pets, process food waste?
+
+I get asked this question quite frequently and the short answer is yes, but to get a year round supply is challenging and costly. If your aim is to supplement the diet of pets, I would consider alternative insects such as crickets or mealworms. These are much easier to rear, have simpler environmental requirements, and have plenty of online guides available. 
+

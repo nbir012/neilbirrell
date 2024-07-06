@@ -1,0 +1,76 @@
+---
+title: "Black soldier fly in New Zealand"
+description: "The history and habits of black soldier fly in New Zealand"
+author:
+  - name: Neil Birrell
+    url: https://neilbirrell.com
+    orcid: 0000-0002-7961-1626
+    affiliation: PhD Candidate, University of Auckland
+    affiliation-url: https://profiles.auckland.ac.nz/n-birrell/about 
+date: 22-01-2024
+categories: [BSF, New Zealand] # self-defined categories
+citation: 
+  url: https://neilbirrell.com/posts/2024_01_22_bsf_at_home/ 
+image: bsfMaleFemale@0.25x.png
+draft: true # setting this to `true` will prevent your post from appearing on your listing page until you're ready!
+---
+
+```{r setup, include=FALSE, message=FALSE}
+library(dplyr)
+library(leaflet)
+library(ggplot2)
+library(dplyr)
+```
+
+```{r bsfData, echo=FALSE}
+
+bsf_obs <- rinat::get_inat_obs(
+  taxon_name = "Hermetia illucens",
+  taxon_id = 82177,
+  place_id = 6803,
+  quality = "research",
+  annotation = c(1,2),
+  maxresults = 500)
+
+
+bsf_obs_latlon <- bsf_obs %>% 
+  select(latitude, longitude)
+
+```
+
+# Where is the black soldier fly from?
+
+The black soldier fly originates from the Americas, first described by Linaeus in 1758. It's natural habitat is warm and humid allowing for several generations per year. It is now very cosmopolitan, found across the world.
+
+In New Zealand, the species was first observed and collected in Auckland in 1956 and since then the adult flies have been observed in the North Island and the top of the South Island.
+
+```{r bsfMap, echo=FALSE}
+#| label: fig-map-inat-obs
+#| fig-cap: "fig-map-inat-obs "
+leaflet() %>%
+  addProviderTiles(providers$Stadia) %>% 
+  addCircles(lng=bsf_obs_latlon$longitude, lat=bsf_obs_latlon$latitude, color = "purple")
+
+```
+
+```{r phenology, echo=FALSE}
+#| label: fig-phen-inat-obs
+#| fig-cap: ""
+
+ bsf_obs %>% 
+  select(observed_on) %>% 
+  mutate(lubridate::ymd(observed_on),
+         year = lubridate::year(observed_on),
+         month = lubridate::month(observed_on, label = TRUE),
+         day = lubridate::day(observed_on)) %>% 
+  group_by(month) %>% 
+  summarise(n = n()) %>% 
+  tidyr::complete(month) %>% 
+  mutate(across(everything(), .fns = ~tidyr::replace_na(.,0))) %>% 
+  ggplot(aes(x = month, y = n)) +
+  geom_bar(stat="identity", fill = "darkorchid4") +
+  labs(x = "Month", y = "Number of observations") +
+  theme_classic()
+```
+
+At the boundaries of its range, the black soldier fly is known to overwinter in the pupal stage. In these areas it is likely that there is only one generation per year.
