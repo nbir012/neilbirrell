@@ -1,5 +1,5 @@
 /* css styles */
-/*.parallax-container {
+.parallax-container {
   position: relative;
 }
 
@@ -14,7 +14,7 @@
 }
 
 /* css styles */
-/*.parallax-container {
+.parallax-container {
   position: relative;
 }
 
@@ -29,8 +29,8 @@
 
 .parallax-image-container.image1 {
   background-image: url(/images/huhuFemale@0.25x.jpg); /* Replace with your first image path */
-/*}
+}
 
-/*.parallax-image-container.image2 {
+.parallax-image-container.image2 {
   background-image: url(/images/loch_maree@0.25x.jpg); /* Replace with your second image path */
-/*}
+}
