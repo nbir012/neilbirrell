@@ -2,7 +2,7 @@
 title: "About Me"
 #description:
 page-layout: full
-image: /images/photo_Neil.jpeg
+image: /images/photo_Neil.avif
 image-alt: "man with short dark brown hair in front of a tree"
 about:
     template: trestles
