@@ -4,7 +4,7 @@
 #subtitle: "I’m Neil."
 #description:
 page-layout: full
-image: /images/huhuFemale@0.25x.avif
+image: /images/huhuFemale@0.25x.jpg
 image-alt: "a macro image of a female huhu beetle"
 css: style.css
 #title-block-banner: "#00000000"
