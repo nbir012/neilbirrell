@@ -1,0 +1,23 @@
+---
+title: "University of Auckland Insect Bioconversion"
+description: "Some of the opportunities available at UoA for industry"
+author:
+  - name: Neil Birrell
+    url: https://neilbirrell.com
+    orcid: 0000-0002-7961-1626
+    affiliation: Research Fellow, University of Auckland
+    affiliation-url: https://profiles.auckland.ac.nz/n-birrell/about 
+date: 15-03-2025
+categories: [BSF, Bioconversion, Insects as Feed, Insects as Food] # self-defined categories
+citation: 
+  url: https://neilbirrell.com/posts/2025_03_15_bioconversion_workshop/ 
+image: 7Q7A2492.jpg
+draft: true # setting this to `true` will prevent your post from appearing on your listing page until you're ready!
+---
+
+## Links to opportunities at UoA
+
+[Newmarket Innovation Precinct](https://nip.auckland.ac.nz/)
+
+[Centre for Innovation and Entrepreneurship](https://www.cie.auckland.ac.nz/)
+
