@@ -10,7 +10,44 @@
 <atom:link href="https://neilbirrell.com/blog/index.xml" rel="self" type="application/rss+xml"/>
 <description>Biologist and entomologist interested in the less fluffy animals</description>
 <generator>quarto-1.5.57</generator>
-<lastBuildDate>Fri, 04 Jan 2019 11:00:00 GMT</lastBuildDate>
+<lastBuildDate>Mon, 02 Mar 2026 11:00:00 GMT</lastBuildDate>
+<item>
+  <title>University of Auckland Insect Bioconversion</title>
+  <dc:creator>Neil Birrell</dc:creator>
+  <link>https://neilbirrell.com/blog/2025_03_15_bioconversion_workshop/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<section id="links-to-opportunities-at-uoa" class="level2">
+<h2 class="anchored" data-anchor-id="links-to-opportunities-at-uoa">Links to opportunities at UoA</h2>
+<p><a href="https://nip.auckland.ac.nz/">Newmarket Innovation Precinct</a></p>
+<p><a href="https://www.cie.auckland.ac.nz/">Centre for Innovation and Entrepreneurship</a></p>
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{birrell2026,
+  author = {Birrell, Neil},
+  title = {University of {Auckland} {Insect} {Bioconversion}},
+  date = {2026-03-03},
+  url = {https://neilbirrell.com/posts/2025_03_15_bioconversion_workshop/},
+  langid = {en}
+}
+</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-birrell2026" class="csl-entry quarto-appendix-citeas">
+Birrell, Neil. 2026. <span>“University of Auckland Insect
+Bioconversion.”</span> March 3, 2026. <a href="https://neilbirrell.com/posts/2025_03_15_bioconversion_workshop/">https://neilbirrell.com/posts/2025_03_15_bioconversion_workshop/</a>.
+</div></div></section></div> ]]></description>
+  <category>BSF</category>
+  <category>Bioconversion</category>
+  <category>Insects as Feed</category>
+  <category>Insects as Food</category>
+  <guid>https://neilbirrell.com/blog/2025_03_15_bioconversion_workshop/</guid>
+  <pubDate>Mon, 02 Mar 2026 11:00:00 GMT</pubDate>
+  <media:content url="https://neilbirrell.com/blog/2025_03_15_bioconversion_workshop/7Q7A2492.jpg" medium="image" type="image/jpeg"/>
+</item>
 <item>
   <title>Kerala Project Plant</title>
   <dc:creator>Neil Birrell</dc:creator>

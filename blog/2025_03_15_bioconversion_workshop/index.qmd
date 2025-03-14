@@ -12,7 +12,7 @@ categories: [BSF, Bioconversion, Insects as Feed, Insects as Food] # self-define
 citation: 
   url: https://neilbirrell.com/posts/2025_03_15_bioconversion_workshop/ 
 image: 7Q7A2492.jpg
-draft: true # setting this to `true` will prevent your post from appearing on your listing page until you're ready!
+draft: false # setting this to `true` will prevent your post from appearing on your listing page until you're ready!
 ---
 
 ## Links to opportunities at UoA

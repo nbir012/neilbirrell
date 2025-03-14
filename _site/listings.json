@@ -1,13 +1,8 @@
 [
   {
-    "listing": "/posts.html",
-    "items": [
-      "/posts/2019_05_01_kerala_bsf_plant/index.html"
-    ]
-  },
-  {
     "listing": "/blog/index.html",
     "items": [
+      "/blog/2025_03_15_bioconversion_workshop/index.html",
       "/blog/2019_05_01_kerala_bsf_plant/index.html"
     ]
   }
