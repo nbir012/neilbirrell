@@ -15,10 +15,6 @@ image: 7Q7A2492.jpg
 draft: false # setting this to `true` will prevent your post from appearing on your listing page until you're ready!
 ---
 
-::: {#fig-clocktower}
-![](https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/Top_of_University_of_Auckland_Clock_Tower.JPG/960px-Top_of_University_of_Auckland_Clock_Tower.JPG?20081121023009){fig-alt="A picture of the clocktower at university of auckland."}
-:::
-
 ## Links to opportunities at the University of Auckland (UoA)
 
 The university has some fantastic researchers and facilities but some times it can be tricky to find the right person to get in touch with. A good place to start is the [innovation and entrepreneurship page](https://www.auckland.ac.nz/en/about-us/business-and-employers/innovation-and-entrepreneurship.html). 
@@ -31,4 +27,8 @@ Here are some great folks to chat to:
 
 [Centre for Innovation and Entrepreneurship](https://www.cie.auckland.ac.nz/) runs numerous programmes and workshops upskilling UoA staff and students in entrepreneurship and innovation. They also have a [Start-up Internship](https://www.cie.auckland.ac.nz/all-programmes/start-up-intern/) programme that connects students with start-ups. On 30th April 2025 there is a [Start-up Careers Showcase](https://www.cie.auckland.ac.nz/programmes/start-up-careers-showcase/) which is a great opportunity to showcase your venture to students and staff at UoA.
 
+
+::: {#clocktower}
+![](https://upload.wikimedia.org/wikipedia/commons/9/97/Top_of_University_of_Auckland_Clock_Tower.JPG){fig-alt="A picture of the clocktower at university of auckland."}
+:::
 

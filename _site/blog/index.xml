@@ -21,16 +21,6 @@
 
 
 
-<div id="fig-clocktower" class="quarto-float quarto-figure quarto-figure-center anchored" alt="A picture of the clocktower at university of auckland.">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-clocktower-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/Top_of_University_of_Auckland_Clock_Tower.JPG/960px-Top_of_University_of_Auckland_Clock_Tower.JPG?20081121023009" class="img-fluid figure-img" alt="A picture of the clocktower at university of auckland.">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-clocktower-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;1
-</figcaption>
-</figure>
-</div>
 <section id="links-to-opportunities-at-the-university-of-auckland-uoa" class="level2">
 <h2 class="anchored" data-anchor-id="links-to-opportunities-at-the-university-of-auckland-uoa">Links to opportunities at the University of Auckland (UoA)</h2>
 <p>The university has some fantastic researchers and facilities but some times it can be tricky to find the right person to get in touch with. A good place to start is the <a href="https://www.auckland.ac.nz/en/about-us/business-and-employers/innovation-and-entrepreneurship.html">innovation and entrepreneurship page</a>.</p>
@@ -38,6 +28,9 @@ Figure&nbsp;1
 <p><a href="https://www.uniservices.co.nz/">Uniservices</a> brings together researchers, investors, businesses, governments and communities to turn research into impact. These are the folks to chat to if you want to connect with the university but aren’t sure where to start. They can help you find the right person to talk to about your project or idea.</p>
 <p><a href="https://nip.auckland.ac.nz/">Newmarket Innovation Precinct</a> is The University of Auckland’s research commercialisation and industry collaboration hub. They are located in Newmarket and offer a range of opportunities to collaborate with experts and engineers at the university.</p>
 <p><a href="https://www.cie.auckland.ac.nz/">Centre for Innovation and Entrepreneurship</a> runs numerous programmes and workshops upskilling UoA staff and students in entrepreneurship and innovation. They also have a <a href="https://www.cie.auckland.ac.nz/all-programmes/start-up-intern/">Start-up Internship</a> programme that connects students with start-ups. On 30th April 2025 there is a <a href="https://www.cie.auckland.ac.nz/programmes/start-up-careers-showcase/">Start-up Careers Showcase</a> which is a great opportunity to showcase your venture to students and staff at UoA.</p>
+<div id="clocktower">
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/9/97/Top_of_University_of_Auckland_Clock_Tower.JPG" class="img-fluid" alt="A picture of the clocktower at university of auckland."></p>
+</div>
 
 
 </section>
