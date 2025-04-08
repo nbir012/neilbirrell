@@ -15,13 +15,19 @@ image: 7Q7A2492.jpg
 draft: false # setting this to `true` will prevent your post from appearing on your listing page until you're ready!
 ---
 
-## Links to opportunities at the University of Auckland
+::: {#fig-clocktower}
+![](https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/Top_of_University_of_Auckland_Clock_Tower.JPG/960px-Top_of_University_of_Auckland_Clock_Tower.JPG?20081121023009){fig-alt="A picture of the clocktower at university of auckland."}
+:::
 
-The university has some fantastic researchers and facilities but some times it can be tricky to find the right person to get in touch with. Here are some great folks to chat to:
+## Links to opportunities at the University of Auckland (UoA)
+
+The university has some fantastic researchers and facilities but some times it can be tricky to find the right person to get in touch with. A good place to start is the [innovation and entrepreneurship page](https://www.auckland.ac.nz/en/about-us/business-and-employers/innovation-and-entrepreneurship.html). 
+
+Here are some great folks to chat to:
 
 [Uniservices](https://www.uniservices.co.nz/) brings together researchers, investors, businesses, governments and communities to turn research into impact. These are the folks to chat to if you want to connect with the university but aren't sure where to start. They can help you find the right person to talk to about your project or idea.
 
-[Newmarket Innovation Precinct](https://nip.auckland.ac.nz/) is The University of Auckland's research commercialisation and industry collaboration hub.
+[Newmarket Innovation Precinct](https://nip.auckland.ac.nz/) is The University of Auckland's research commercialisation and industry collaboration hub. They are located in Newmarket and offer a range of opportunities to collaborate with experts and engineers at the university.
 
 [Centre for Innovation and Entrepreneurship](https://www.cie.auckland.ac.nz/) runs numerous programmes and workshops upskilling UoA staff and students in entrepreneurship and innovation. They also have a [Start-up Internship](https://www.cie.auckland.ac.nz/all-programmes/start-up-intern/) programme that connects students with start-ups. On 30th April 2025 there is a [Start-up Careers Showcase](https://www.cie.auckland.ac.nz/programmes/start-up-careers-showcase/) which is a great opportunity to showcase your venture to students and staff at UoA.
 
