@@ -1,0 +1,296 @@
+[
+  {
+    "objectID": "teaching/postgrad-r/whole-game.html#the-data-science-cycle",
+    "href": "teaching/postgrad-r/whole-game.html#the-data-science-cycle",
+    "title": "R for Data Science",
+    "section": "The data science cycle",
+    "text": "The data science cycle\n\nImport → Tidy → Transform ⇄ Visualise → (Model → Communicate) …all sitting inside Program.\n\n\nWe’ll follow it left to right today:\n\nSet up — a project structure that keeps everything findable and reproducible.\nImport — get a data file into R.\nTidy — reshape it into a consistent form.\nTransform — filter, derive variables, summarise by group.\nVisualise — turn the table into a picture. (We finish here.)"
+  },
+  {
+    "objectID": "teaching/postgrad-r/whole-game.html#always-work-in-an-rstudio-project",
+    "href": "teaching/postgrad-r/whole-game.html#always-work-in-an-rstudio-project",
+    "title": "R for Data Science",
+    "section": "Always work in an RStudio Project",
+    "text": "Always work in an RStudio Project\nAn RStudio Project (.Rproj) bundles everything for one piece of work.\n\nOpen the project and your working directory is the project folder — automatically.\nNo more setwd(\"C:/Users/neil/Desktop/...\") that breaks on every other machine.\nEach project gets its own history, and you can have several open at once.\n\n\n\nCreate one with File → New Project → New Directory. One project = one paper / thesis chapter / analysis.\n\n\nThe Project is the unit of reproducibility. Everything below assumes you’re inside one."
+  },
+  {
+    "objectID": "teaching/postgrad-r/whole-game.html#a-sensible-folder-structure",
+    "href": "teaching/postgrad-r/whole-game.html#a-sensible-folder-structure",
+    "title": "R for Data Science",
+    "section": "A sensible folder structure",
+    "text": "A sensible folder structure\nmy-analysis/\n├── my-analysis.Rproj      # the project file — open THIS\n├── README.md              # what is this, who, how to run it\n├── data-raw/              # original data — READ-ONLY, never edit by hand\n├── data/                  # cleaned / derived data you generate from data-raw\n├── Code/                  # your analysis scripts (.R) or Quarto docs (.qmd)\n├── output/\n│   ├── figures/           # plots you export\n│   └── tables/            # results tables\n└── renv/                  # optional: a reproducible package library\n\nTwo principles: raw data is sacred and read-only; everything in output/ is regenerable by re-running your scripts."
+  },
+  {
+    "objectID": "teaching/postgrad-r/whole-game.html#paths-that-dont-break",
+    "href": "teaching/postgrad-r/whole-game.html#paths-that-dont-break",
+    "title": "R for Data Science",
+    "section": "Paths that don’t break",
+    "text": "Paths that don’t break\n\n# Bad — absolute, machine-specific:\nread_csv(\"C:/Users/neil/Desktop/project/data-raw/palmerpenguins.csv\")\n\n# Good — relative to the project root:\nread_csv(\"data-raw/palmerpenguins.csv\")\n\n# Robust — builds the path correctly on any OS / machine:\nlibrary(here)\nread_csv(here(\"data-raw\", \"palmerpenguins.csv\"))\n\nBecause you’re in a Project, relative paths just work. here::here() makes them bullet-proof even from sub-folders."
+  },
+  {
+    "objectID": "teaching/postgrad-r/whole-game.html#reproducible-habits",
+    "href": "teaching/postgrad-r/whole-game.html#reproducible-habits",
+    "title": "R for Data Science",
+    "section": "Reproducible habits",
+    "text": "Reproducible habits\n\nWrite your analysis in a script (.R) or Quarto (.qmd) — not the console — so it’s saved and re-runnable.\nRun a line / selection with Cmd/Ctrl + Enter; run the whole file with Cmd/Ctrl + Shift + Enter.\nRestart R often (Session → Restart R) and re-run from the top.\n\n\n\nTurn off “save workspace to .RData”: Tools → Global Options → uncheck “Restore .RData”. A script that only works because of leftover objects isn’t reproducible."
+  },
+  {
+    "objectID": "teaching/postgrad-r/whole-game.html#assignment-naming",
+    "href": "teaching/postgrad-r/whole-game.html#assignment-naming",
+    "title": "R for Data Science",
+    "section": "Assignment & naming",
+    "text": "Assignment & naming\n\n# Assign with &lt;-   (shortcut: Alt/Option + -)\nmean_mass &lt;- 4200\n\n# Names: lowercase, words separated by _ (snake_case)\nflipper_summary &lt;- 1   # good\nFlipperSummary  &lt;- 1   # avoid\nflipper.summary &lt;- 1   # avoid\n\n\nUse &lt;- to assign; reserve = for arguments inside functions.\nNothing prints when you assign — type the object’s name to see it."
+  },
+  {
+    "objectID": "teaching/postgrad-r/whole-game.html#calling-functions",
+    "href": "teaching/postgrad-r/whole-game.html#calling-functions",
+    "title": "R for Data Science",
+    "section": "Calling functions",
+    "text": "Calling functions\n\nseq(from = 1, to = 10, by = 2)\n#&gt; [1] 1 3 5 7 9\n\n\nFunctions take arguments as name = value.\nFirst arguments are usually passed by position; name the rest for clarity.\n?seq opens the help page; Tab-completion shows argument names.\n\n\nDemo tab-completion and matching-parenthesis highlighting. Unclosed quotes/parens give a + continuation prompt — press Esc to escape."
+  },
+  {
+    "objectID": "teaching/postgrad-r/whole-game.html#code-style",
+    "href": "teaching/postgrad-r/whole-game.html#code-style",
+    "title": "R for Data Science",
+    "section": "Code style",
+    "text": "Code style\n\n# Spaces around operators and after commas:\nmean(x, na.rm = TRUE)      # good\nmean(x,na.rm=TRUE)         # cramped\n\n# One statement per line; descriptive snake_case names:\nmean_body_mass &lt;- mean(penguins$body_mass_g, na.rm = TRUE)\n\n\nSpaces around &lt;-, ==, +, *; a space after every comma.\nThe {styler} package reformats code automatically; {lintr} flags problems.\n\n\nCode is read far more often than written — including by you, in six months."
+  },
+  {
+    "objectID": "teaching/postgrad-r/whole-game.html#the-three-rules-of-tidy-data",
+    "href": "teaching/postgrad-r/whole-game.html#the-three-rules-of-tidy-data",
+    "title": "R for Data Science",
+    "section": "The three rules of tidy data",
+    "text": "The three rules of tidy data\n\n\n\nEach variable is a column.\nEach observation is a row.\nEach value is a cell.\n\n\n\nFor us: one row per specimen, one column per measured trait, with species, site, and sex as their own columns.\nTidy data is what dplyr, ggplot2 and most models expect. Field data rarely arrives this way — Part 4 shows how to get it there."
+  },
+  {
+    "objectID": "teaching/postgrad-r/whole-game.html#import-read_csv",
+    "href": "teaching/postgrad-r/whole-game.html#import-read_csv",
+    "title": "R for Data Science",
+    "section": "Import: read_csv()",
+    "text": "Import: read_csv()\n\nlibrary(tidyverse)\n\npenguins &lt;- read_csv(\"data-raw/palmerpenguins.csv\")\n\n\nreadr::read_csv() gives you:\n\na tibble (a tidy-friendly data frame),\nautomatic column-type guessing, printed so you can check it,\nhandy arguments: na = c(\"\", \"NA\", \"-999\"), skip =, col_types = to override guesses.\n\n\nAlways eyeball the type report and first rows — silent mis-typing is the #1 import bug."
+  },
+  {
+    "objectID": "teaching/postgrad-r/whole-game.html#other-importers",
+    "href": "teaching/postgrad-r/whole-game.html#other-importers",
+    "title": "R for Data Science",
+    "section": "Other importers",
+    "text": "Other importers\n\n\n\nFormat\nFunction\nPackage\n\n\n\n\n.csv / delimited\nread_csv(), read_delim()\nreadr\n\n\nExcel .xlsx\nread_excel()\nreadxl\n\n\n.rds (one R object)\nread_rds()\nreadr\n\n\nSPSS / Stata / SAS\nread_sav(), read_dta()\nhaven"
+  },
+  {
+    "objectID": "teaching/postgrad-r/whole-game.html#meet-the-data",
+    "href": "teaching/postgrad-r/whole-game.html#meet-the-data",
+    "title": "R for Data Science",
+    "section": "Meet the data",
+    "text": "Meet the data\nWe’ll use morphometric data — measurements across species and sites. Once loaded:\n\npenguins\n#&gt; # A tibble: 344 × 8\n#&gt;   species island    bill_length_mm bill_depth_mm flipper_length_mm body_mass_g\n#&gt;   &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;\n#&gt; 1 Adelie  Torgersen           39.1          18.7               181        3750\n#&gt; 2 Adelie  Torgersen           39.5          17.4               186        3800\n#&gt; 3 Adelie  Torgersen           40.3          18                 195        3250\n#&gt; 4 Adelie  Torgersen           NA            NA                  NA          NA\n#&gt; 5 Adelie  Torgersen           36.7          19.3               193        3450\n#&gt; 6 Adelie  Torgersen           39.3          20.6               190        3650\n#&gt; # ℹ 338 more rows\n#&gt; # ℹ 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;"
+  },
+  {
+    "objectID": "teaching/postgrad-r/whole-game.html#a-first-look",
+    "href": "teaching/postgrad-r/whole-game.html#a-first-look",
+    "title": "R for Data Science",
+    "section": "A first look",
+    "text": "A first look\n\nglimpse(penguins)\n#&gt; Rows: 344\n#&gt; Columns: 8\n#&gt; $ species           &lt;fct&gt; Adelie, Adelie, Adelie, Adelie, Adelie, Adelie, Adel…\n#&gt; $ island            &lt;fct&gt; Torgersen, Torgersen, Torgersen, Torgersen, Torgerse…\n#&gt; $ bill_length_mm    &lt;dbl&gt; 39.1, 39.5, 40.3, NA, 36.7, 39.3, 38.9, 39.2, 34.1, …\n#&gt; $ bill_depth_mm     &lt;dbl&gt; 18.7, 17.4, 18.0, NA, 19.3, 20.6, 17.8, 19.6, 18.1, …\n#&gt; $ flipper_length_mm &lt;int&gt; 181, 186, 195, NA, 193, 190, 181, 195, 193, 190, 186…\n#&gt; $ body_mass_g       &lt;int&gt; 3750, 3800, 3250, NA, 3450, 3650, 3625, 4675, 3475, …\n#&gt; $ sex               &lt;fct&gt; male, female, female, NA, female, male, female, male…\n#&gt; $ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007…\n\nglimpse() is your first move on any new dataset: every column, its type, and a peek at the values."
+  },
+  {
+    "objectID": "teaching/postgrad-r/whole-game.html#tidy-in-practice-a-messy-table",
+    "href": "teaching/postgrad-r/whole-game.html#tidy-in-practice-a-messy-table",
+    "title": "R for Data Science",
+    "section": "Tidy in practice: a messy table",
+    "text": "Tidy in practice: a messy table\nField data often arrives wide — species as column headers:\n\ncounts_wide &lt;- tribble(\n  ~site,   ~Adelie, ~Gentoo, ~Chinstrap,\n  \"North\",      12,      30,          5,\n  \"South\",      18,      22,          9\n)\ncounts_wide\n#&gt; # A tibble: 2 × 4\n#&gt;   site  Adelie Gentoo Chinstrap\n#&gt;   &lt;chr&gt;  &lt;dbl&gt;  &lt;dbl&gt;     &lt;dbl&gt;\n#&gt; 1 North     12     30         5\n#&gt; 2 South     18     22         9\n\nspecies is a variable trapped in the headers — not tidy."
+  },
+  {
+    "objectID": "teaching/postgrad-r/whole-game.html#pivot_longer-to-the-rescue",
+    "href": "teaching/postgrad-r/whole-game.html#pivot_longer-to-the-rescue",
+    "title": "R for Data Science",
+    "section": "pivot_longer() to the rescue",
+    "text": "pivot_longer() to the rescue\n\ncounts_long &lt;- counts_wide |&gt;\n  pivot_longer(\n    cols      = -site,\n    names_to  = \"species\",\n    values_to = \"count\"\n  )\ncounts_long\n#&gt; # A tibble: 6 × 3\n#&gt;   site  species   count\n#&gt;   &lt;chr&gt; &lt;chr&gt;     &lt;dbl&gt;\n#&gt; 1 North Adelie       12\n#&gt; 2 North Gentoo       30\n#&gt; 3 North Chinstrap     5\n#&gt; 4 South Adelie       18\n#&gt; 5 South Gentoo       22\n#&gt; 6 South Chinstrap     9\n\nNow species and count are proper columns — ready to group, plot, model. (pivot_wider() does the reverse.)"
+  },
+  {
+    "objectID": "teaching/postgrad-r/whole-game.html#transform-the-pipe",
+    "href": "teaching/postgrad-r/whole-game.html#transform-the-pipe",
+    "title": "R for Data Science",
+    "section": "Transform: the pipe |>",
+    "text": "Transform: the pipe |&gt;\nThe pipe passes the result on the left into the first argument on the right.\n\n# Nested (hard to read):\nsummarise(group_by(filter(penguins, !is.na(sex)), species), n = n())\n\n# Piped (read top to bottom):\npenguins |&gt;\n  filter(!is.na(sex)) |&gt;\n  group_by(species) |&gt;\n  summarise(n = n())\n\n\nRead |&gt; as “and then” — it turns nested calls into a readable recipe."
+  },
+  {
+    "objectID": "teaching/postgrad-r/whole-game.html#filter-keep-rows",
+    "href": "teaching/postgrad-r/whole-game.html#filter-keep-rows",
+    "title": "R for Data Science",
+    "section": "filter() — keep rows",
+    "text": "filter() — keep rows\n\npenguins |&gt;\n  filter(species == \"Adelie\", body_mass_g &gt; 4000)\n#&gt; # A tibble: 35 × 8\n#&gt;   species island    bill_length_mm bill_depth_mm flipper_length_mm body_mass_g\n#&gt;   &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;\n#&gt; 1 Adelie  Torgersen           39.2          19.6               195        4675\n#&gt; 2 Adelie  Torgersen           42            20.2               190        4250\n#&gt; 3 Adelie  Torgersen           34.6          21.1               198        4400\n#&gt; 4 Adelie  Torgersen           42.5          20.7               197        4500\n#&gt; 5 Adelie  Torgersen           46            21.5               194        4200\n#&gt; 6 Adelie  Dream               39.2          21.1               196        4150\n#&gt; # ℹ 29 more rows\n#&gt; # ℹ 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;\n\nOperators: ==  !=  &lt;  &gt;  &lt;=  &gt;=  &  |  %in%, plus is.na()."
+  },
+  {
+    "objectID": "teaching/postgrad-r/whole-game.html#arrange-select",
+    "href": "teaching/postgrad-r/whole-game.html#arrange-select",
+    "title": "R for Data Science",
+    "section": "arrange() & select()",
+    "text": "arrange() & select()\n\n\nReorder rows\n\npenguins |&gt;\n  arrange(desc(body_mass_g)) |&gt;\n  select(species, body_mass_g)\n#&gt; # A tibble: 344 × 2\n#&gt;   species body_mass_g\n#&gt;   &lt;fct&gt;         &lt;int&gt;\n#&gt; 1 Gentoo         6300\n#&gt; 2 Gentoo         6050\n#&gt; 3 Gentoo         6000\n#&gt; 4 Gentoo         6000\n#&gt; 5 Gentoo         5950\n#&gt; 6 Gentoo         5950\n#&gt; # ℹ 338 more rows\n\n\n\nPick columns\n\npenguins |&gt;\n  select(species, island, sex)\n#&gt; # A tibble: 344 × 3\n#&gt;   species island    sex   \n#&gt;   &lt;fct&gt;   &lt;fct&gt;     &lt;fct&gt; \n#&gt; 1 Adelie  Torgersen male  \n#&gt; 2 Adelie  Torgersen female\n#&gt; 3 Adelie  Torgersen female\n#&gt; 4 Adelie  Torgersen &lt;NA&gt;  \n#&gt; 5 Adelie  Torgersen female\n#&gt; 6 Adelie  Torgersen male  \n#&gt; # ℹ 338 more rows"
+  },
+  {
+    "objectID": "teaching/postgrad-r/whole-game.html#mutate-create-variables",
+    "href": "teaching/postgrad-r/whole-game.html#mutate-create-variables",
+    "title": "R for Data Science",
+    "section": "mutate() — create variables",
+    "text": "mutate() — create variables\n\npenguins |&gt;\n  mutate(\n    mass_kg    = body_mass_g / 1000,\n    bill_ratio = bill_length_mm / bill_depth_mm\n  ) |&gt;\n  select(species, mass_kg, bill_ratio)\n#&gt; # A tibble: 344 × 3\n#&gt;   species mass_kg bill_ratio\n#&gt;   &lt;fct&gt;     &lt;dbl&gt;      &lt;dbl&gt;\n#&gt; 1 Adelie     3.75       2.09\n#&gt; 2 Adelie     3.8        2.27\n#&gt; 3 Adelie     3.25       2.24\n#&gt; 4 Adelie    NA         NA   \n#&gt; 5 Adelie     3.45       1.90\n#&gt; 6 Adelie     3.65       1.91\n#&gt; # ℹ 338 more rows\n\nWhere derived morphometrics live — ratios, indices, log-transforms for allometry."
+  },
+  {
+    "objectID": "teaching/postgrad-r/whole-game.html#group_by-summarise",
+    "href": "teaching/postgrad-r/whole-game.html#group_by-summarise",
+    "title": "R for Data Science",
+    "section": "group_by() + summarise()",
+    "text": "group_by() + summarise()\nThe workhorse for “compute something per species / site / treatment”:\n\npenguins |&gt;\n  group_by(species, sex) |&gt;\n  summarise(\n    n         = n(),\n    mean_mass = mean(body_mass_g, na.rm = TRUE),\n    sd_mass   = sd(body_mass_g, na.rm = TRUE),\n    .groups   = \"drop\"\n  )\n#&gt; # A tibble: 8 × 5\n#&gt;   species   sex        n mean_mass sd_mass\n#&gt;   &lt;fct&gt;     &lt;fct&gt;  &lt;int&gt;     &lt;dbl&gt;   &lt;dbl&gt;\n#&gt; 1 Adelie    female    73     3369.    269.\n#&gt; 2 Adelie    male      73     4043.    347.\n#&gt; 3 Adelie    &lt;NA&gt;       6     3540     477.\n#&gt; 4 Chinstrap female    34     3527.    285.\n#&gt; 5 Chinstrap male      34     3939.    362.\n#&gt; 6 Gentoo    female    58     4680.    282.\n#&gt; # ℹ 2 more rows\n\n\nFlag na.rm = TRUE — one NA poisons the mean otherwise. .groups = “drop” avoids the “still grouped” surprise downstream."
+  },
+  {
+    "objectID": "teaching/postgrad-r/whole-game.html#the-grammar-of-graphics",
+    "href": "teaching/postgrad-r/whole-game.html#the-grammar-of-graphics",
+    "title": "R for Data Science",
+    "section": "The grammar of graphics",
+    "text": "The grammar of graphics\nEvery ggplot is built from the same pieces:\nggplot(data = &lt;DATA&gt;) +\n  geom_&lt;TYPE&gt;(mapping = aes(&lt;MAPPINGS&gt;))\n\n\ndata — the data frame.\naes() — aesthetic mappings: which variable maps to x, y, colour, shape…\ngeom_ — the geometric object representing the data (points, lines, bars…).\nLayers are added with +."
+  },
+  {
+    "objectID": "teaching/postgrad-r/whole-game.html#a-first-plot",
+    "href": "teaching/postgrad-r/whole-game.html#a-first-plot",
+    "title": "R for Data Science",
+    "section": "A first plot",
+    "text": "A first plot\n\n\nggplot(\n  data = penguins,\n  mapping = aes(x = flipper_length_mm,\n                y = body_mass_g)\n) +\n  geom_point()\n\n\n\n\n\n\n\n\n\n\nBuild it live: ggplot(penguins) -&gt; blank canvas, add aes, then geom_point. A blank grey panel is “correct” until you add a geom."
+  },
+  {
+    "objectID": "teaching/postgrad-r/whole-game.html#map-a-variable-to-colour",
+    "href": "teaching/postgrad-r/whole-game.html#map-a-variable-to-colour",
+    "title": "R for Data Science",
+    "section": "Map a variable to colour",
+    "text": "Map a variable to colour\n\n\nggplot(\n  penguins,\n  aes(x = flipper_length_mm,\n      y = body_mass_g,\n      colour = species)\n) +\n  geom_point()\n\n\n\n\n\n\n\n\n\nAnything that should respond to the data goes inside aes()."
+  },
+  {
+    "objectID": "teaching/postgrad-r/whole-game.html#set-vs.-map",
+    "href": "teaching/postgrad-r/whole-game.html#set-vs.-map",
+    "title": "R for Data Science",
+    "section": "Set vs. map",
+    "text": "Set vs. map\nWant one fixed colour? Set it outside aes():\n\n\nggplot(penguins, aes(flipper_length_mm, body_mass_g)) +\n  geom_point(colour = \"steelblue\", alpha = 0.7)\n\n\n\n\n\n\n\n\n\n\nMap = a variable controls it (inside aes()). Set = fixed constant (outside aes())."
+  },
+  {
+    "objectID": "teaching/postgrad-r/whole-game.html#add-a-model-layer",
+    "href": "teaching/postgrad-r/whole-game.html#add-a-model-layer",
+    "title": "R for Data Science",
+    "section": "Add a model layer",
+    "text": "Add a model layer\n\n\nggplot(\n  penguins,\n  aes(x = flipper_length_mm,\n      y = body_mass_g,\n      colour = species)\n) +\n  geom_point() +\n  geom_smooth(method = \"lm\")\n\n\n\n\n\n\n\n\n\nOne trend line per group, because colour is mapped globally."
+  },
+  {
+    "objectID": "teaching/postgrad-r/whole-game.html#facets-small-multiples",
+    "href": "teaching/postgrad-r/whole-game.html#facets-small-multiples",
+    "title": "R for Data Science",
+    "section": "Facets — small multiples",
+    "text": "Facets — small multiples\n\nggplot(penguins, aes(flipper_length_mm, body_mass_g, colour = species)) +\n  geom_point() +\n  facet_wrap(~ island)\n\n\nfacet_wrap(~ var) splits one plot into a panel per level — ideal for sites / treatments."
+  },
+  {
+    "objectID": "teaching/postgrad-r/whole-game.html#putting-it-together",
+    "href": "teaching/postgrad-r/whole-game.html#putting-it-together",
+    "title": "R for Data Science",
+    "section": "Putting it together",
+    "text": "Putting it together\nThe whole game in one piped pipeline, ending in a plot:\n\npenguins |&gt;                                   # import (loaded earlier)\n  filter(!is.na(body_mass_g), !is.na(sex)) |&gt; # transform: drop missing\n  mutate(mass_kg = body_mass_g / 1000) |&gt;     # transform: derive variable\n  group_by(species, sex) |&gt;                   # transform: group\n  summarise(mean_kg = mean(mass_kg), .groups = \"drop\") |&gt;\n  ggplot(aes(species, mean_kg, fill = sex)) + # visualise\n  geom_col(position = \"dodge\") +\n  labs(x = NULL, y = \"Mean mass (kg)\", fill = \"Sex\")"
+  },
+  {
+    "objectID": "teaching/postgrad-r/whole-game.html#what-we-covered",
+    "href": "teaching/postgrad-r/whole-game.html#what-we-covered",
+    "title": "R for Data Science",
+    "section": "What we covered",
+    "text": "What we covered\n\n\nSet-up & foundations\n\nRStudio Projects + folder structure\nRelative paths / here()\nAssignment, naming, functions, style\nTidy data: the 3 rules\n\n\n\nThe whole game\n\nread_csv() and friends\npivot_longer() → tidy\ndplyr: filter / arrange / select / mutate / summarise + |&gt;\nggplot2: aes, geoms, set vs map, facets"
+  },
+  {
+    "objectID": "teaching/postgrad-r/whole-game.html#your-turn-exercises",
+    "href": "teaching/postgrad-r/whole-game.html#your-turn-exercises",
+    "title": "R for Data Science",
+    "section": "Your turn — exercises",
+    "text": "Your turn — exercises\n\nMake a project folder for a small analysis with data-raw/, data/, R/, and output/figures/.\nRead one of your own CSVs with read_csv(), check the column types, and glimpse() it.\nCompute the number of specimens and mean body mass per island (group_by + summarise).\nPlot bill_length_mm vs bill_depth_mm, colour by species, add geom_smooth(method = \"lm\"). Then facet by species — what changes? (Simpson’s paradox!)\n\n\nBonus: take a wide spreadsheet from your own work and tidy it with pivot_longer()."
+  },
+  {
+    "objectID": "teaching/postgrad-r/whole-game.html#getting-unstuck",
+    "href": "teaching/postgrad-r/whole-game.html#getting-unstuck",
+    "title": "R for Data Science",
+    "section": "Getting unstuck",
+    "text": "Getting unstuck\n\n?function — the help page (the Examples section is gold).\nvignette(\"dplyr\") — narrative, worked guides for a package.\nGoogle the exact error message; Posit Community & Stack Overflow [r] [tidyverse].\nMake a reprex with the {reprex} package before asking — you’ll often solve it yourself."
+  },
+  {
+    "objectID": "teaching/postgrad-r/whole-game.html#where-to-go-next",
+    "href": "teaching/postgrad-r/whole-game.html#where-to-go-next",
+    "title": "R for Data Science",
+    "section": "Where to go next",
+    "text": "Where to go next\n\n📖 R for Data Science (2e) — free: r4ds.hadley.nz\n🧾 Posit cheatsheets — ggplot2, dplyr, tidyr: posit.co/resources/cheatsheets\n🐞 For ecology, pair these with {vegan}, {lme4}/{glmmTMB}, {DHARMa}\n\n\n\nThe whole game is just this loop, run over and over: import → tidy → transform ⇄ visualise. Everything else is depth."
+  },
+  {
+    "objectID": "teaching/postgrad-r/whole-game.html#thank-you",
+    "href": "teaching/postgrad-r/whole-game.html#thank-you",
+    "title": "R for Data Science",
+    "section": "Thank you",
+    "text": "Thank you\nQuestions?\n\nSlides built with Quarto + reveal.js. Source: whole-game.qmd. Content adapted from R for Data Science (2e) (CC BY-NC-ND)."
+  },
+  {
+    "objectID": "media/index.html",
+    "href": "media/index.html",
+    "title": "Media",
+    "section": "",
+    "text": "I occasionally get asked to talk about science in the media. Here’s a collection of media appearances:\n\n2024\nTVNZ Breakfast - Commentary on the recent approval of 16 insect species for human consumption in Singapore\nRNZ The Panel - Commentary on conspiracy theories around eating insects, and New Zealand attitudes towards eating insects.\n\n\n2022\nRNZ article - Commentary on a recent paper on insect protein as a climate friendly alternative to meat\nRNZ Morning Rural News - Commentary on a recent paper on insect protein as a climate friendly alternative to meat\nbFM: Tomorrow’s World - Interview about black soldier fly organic waste treatment\n\n\n2021\nTVNZ - Bug Hunter: Cooking with Insects. I feature alongside my talented friend Morgane Merien\nStuff, NZ - An article on some of my research findings\nRNZ, Afternoons with Jesse Mulligan - Interview about my research findings\nMagic talk, Rural Today - Rural news piece on my research findings\nMagic Talk, AM show\nReady steady learn, bFM - Ways insects can help reduce our carbon emissions\n\n\n2019\nRNZ, Saturday Morning with Kim Hill - An interview on work in Kerala, India\nGreen Desk: bFM - Interview about black soldier fly stuff"
+  },
+  {
+    "objectID": "blog/index.html",
+    "href": "blog/index.html",
+    "title": "Blog",
+    "section": "",
+    "text": "University of Auckland Insect Bioconversion\n\n\n\nBSF\n\nBioconversion\n\nInsects as Feed\n\nInsects as Food\n\n\n\nSome of the opportunities available at UoA for industry\n\n\n\nNeil Birrell\n\n\nMar 3, 2026\n\n\n\n\n\n\n\n\n\n\n\n\n\nKerala Project Plant\n\n\n\nBSF\n\nIndia\n\n\n\nOriginally on hexacycle.co.nz, here is a brief overview of starting a black soldier fly plant in Kerala, India\n\n\n\nNeil Birrell\n\n\nJan 5, 2019\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "blog/2019_05_01_kerala_bsf_plant/index.html",
+    "href": "blog/2019_05_01_kerala_bsf_plant/index.html",
+    "title": "Kerala Project Plant",
+    "section": "",
+    "text": "After missing the bus on the way to a winery tour at Waiheke Island, I found myself chatting to a taxi driver about black soldier fly, organic waste, and sustainable protein. The driver turned out to be related to a large poultry producer in Kerala, India. I was introduced to Ashok John, owner of Summit Trades New Zealand, and six months later, I was on a plane to set-up the first black soldier fly waste treatment plant in India.\n\n\n\nOur black soldier fly stall at the agricultural trade show, Krishi Mela 2018 in Karnataka. Photo: Neil Birrell, CC-BY\n\n\nThe pilot plant was to be situated at Abhilash Hatcheries, where the company produces fertilized chicken eggs for sale, in two old poultry sheds that were no longer being used.\n\n\n\nTwo disused poultry sheds that would become the rearing facilities for producing black soldier fly eggs and larvae. Photo: Abhilash Hatcheries, CC-BY\n\n\nAs I wouldn’t be able to stay and train workers on rearing black soldier fly and processing organic waste for a long period of time, I chose to design the plant around the SANDEC/Eawag model, which has excellent openly accessible documentation1. The pilot plant has the capacity to process 21 tonnes of organic waste a week. I drew up plans and sent these through to Abhilash Hatcheries, where construction began.\n\n\n\n\n\n\n\n\n\n\n\nConstruction of the facility. Photo: Neil Birrell, CC-BY\n\n\n\nIt was a fairly long flight from New Zealand, and on arrival, I was straight into it with a ceremony and presentation to the local priesthood. The area the pilot plant is based in is a majority Catholic community, so the pilot plant had to be blessed, followed by a big dinner.\nWaste is a highly sensitive subject in Kerala and other states, with problems associated with waste such as odour, flies, and leachate being of particular concern to local citizens. There have been several waste management projects that haven’t worked, impacting the health and well-being of neighbours and causing an understandable distrust and suspicion from the community of new initiatives.\nThis meant ensuring there weren’t odour, vermin, or waste water issues through site design and training. For example, training technicians how to feed the correct quantity and depth of waste to larvae to minimize the risk of anoxic conditions that allow odour-causing bacteria to establish and ensuring high densities of BSF larvae to out compete pest flies. We initially did a pilot test on a pig farm on the outskirts of Kochi, which allowed us to test the design and train technicians before moving to the final site.\n\n\n\n\n\n\nSorting restaurant waste into trays.\n\n\n\n\n\n\n\nSorting restaurant waste into trays.\n\n\n\n\n\n\n\nStacked trays to maximise productive surface area. The facility has a capacity of 21 tonnes of organic waste a week .\n\n\n\n\n\n\nPhotos: Neil Birrell, CC-BY\n\n\n\nUnfortunately, the lack of an effective waste management infrastructure has led to the dumping of waste on roadsides and wetlands, which is a stark contrast to the beauty of the natural environment in Kerala. There is, however, a definite appetite for fixing this and a lot of interest from people in ways to reduce these issues.\n\n\n\n\n\n\nRubbish dumped near Kerala State Pollution Control Board\n\n\n\n\n\n\n\nRubbish dumped in a wetland area\n\n\n\n\n\n\nExamples of waste being dumped in urban and rural settings. Photos: Neil Birrell, CC-BY\n\n\n\nAs Abhilash Hatcheries also sells chickens for people to grow at home, either for eggs for their use or to sell to stores, the black soldier fly larvae can also be used as a source of protein for the chickens at a domestic scale, reducing feed costs for the family. Providing training for people to use black soldier fly larvae at home to reduce their organic waste is another possible option for future.\nThere were a number of things in India that are different to what I have experienced in New Zealand, for instance, lizards getting into the enclosures and eating the larvae. The question I was asked most was “Are you married?” followed by “Do you live with your parents?”. Another learning was the regulatory environment in India is complex and slightly Kafkaesque at times. Between this and the many language differences between each state, it would make it very difficult to do business if you aren’t a local. Having a strong partnership with a local company is really important. As a side note, stopping for masala chai (with plenty of jaggery) on the way to every meeting is standard, and being late to meetings seems to be expected - there seems to be a separate time zone called Kerala time.\n\n\n\n\n\n\nPalms in the wetlands outside Kochi\n\n\n\n\n\n\n\nThe park outside my hotel\n\n\n\n\n\n\nKerala is a beautiful and unique place to visit. Photos: Neil Birrell, CC-BY\n\n\n\nOne of my favourite things from this project is I get to wake up to lots of strange photos such as newspaper clippings in different languages which have my picture in them but I haven’t the foggiest what they say.\n\n\n\n\n\n\n\n\n\n\n\nNewspaper clippings from the Kerala project. Photos: Neil Birrell, CC-BY\n\n\n\nBlog Post: Kerala Project Plant, India by Neil Birrell (Hexacycle Limited) is licensed under a Creative Commons Attribution 4.0 International License."
+  },
+  {
+    "objectID": "blog/2019_05_01_kerala_bsf_plant/index.html#footnotes",
+    "href": "blog/2019_05_01_kerala_bsf_plant/index.html#footnotes",
+    "title": "Kerala Project Plant",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nIf you are in a country with a tropical climate, and are interested in starting a business using black soldier fly, I would strongly recommend using this free resource. It will give you an idea of the work involved and the capital costs to set this up yourself.↩︎"
+  },
+  {
+    "objectID": "about/index.html",
+    "href": "about/index.html",
+    "title": "About Me",
+    "section": "",
+    "text": "Education\nMy masters thesis investigated allometry and developmental plasticity in sexually selected traits of Hermetia illucens, the black soldier fly. I completed my masters in 2018.\nMy doctoral thesis, “Insects as Food in Aotearoa New Zealand” focused on past and present use of insects as food, public perceptions of insects as food, metabolomic fingerprinting of an endemic edible cerambycid beetle, Prionoplus reticularis. I also investigated the beetles’ scramble competition mating system, and, using static allometry and home-made flight mills (COVID lock-down project), I found evidence of the interplay of sexual selection and stabilising selection on traits associated with male fitness in this species. I also found evidence of sexual dimorphism, indicating the importance of female chemical cues to male mate searching. Using scanning electron microscopy, I investigated the antennal ultrastructure of male and female P. reticularis, describing unique, sexually dimorphic sensilla in this species providing further evidence of the importance of these chemical cues. In March 2024, I defended my doctoral thesis.\n\n\n\nBusiness\nDuring my Masters, I ventured into entrepreneurship and founded Hexacycle. The company established several black soldier fly waste processing plants in Kerala, India. These plants processed up to 3 tonnes of organic waste daily. This waste was converted into insect biomass, from which protein was extracted for use in poultry and pet feeds. The remaining frass (insect poo and leftover substrate) is used as a fertiliser.\nToday, I enjoy research and academia but still provide advice to companies, organisations and individuals interested in using insects as food or feed both in New Zealand and globally.\n\n\n\nService\nI am an active member of the Entomological Society of New Zealand and have been on the committee since 2018. I am currently an officer on the executive committee and was previously co-treasurer. During my studies, I was also actively involved with the early career research group of Te Pūnaha Matatini, TPM Whānau, where I held a variety of roles including Chair in 2022. TPM Whānau is a group of early career researchers from across Aotearoa New Zealand who are interested in complex systems science.\nI have also volunteered for Ark in the Park, a conservation project in the Waitākere Ranges, running a trapping line and helping out with the invertebrate sampling programme.\nI often get asked to visit schools and talk about insects and science in general - feel free to get in touch if you would like me to visit your class.\n\n\n\nWhat I do for fun\nOutside of work, I’m an avid hiker and enjoy multi-day hikes, especially to the many beautiful back country huts that Aotearoa has to offer. I also love using iNaturalist in my free time to record some of the interesting critters I see. My partner and I also have a mercurial border collie named Rimu."
+  },
+  {
+    "objectID": "blog/2025_03_15_bioconversion_workshop/index.html",
+    "href": "blog/2025_03_15_bioconversion_workshop/index.html",
+    "title": "University of Auckland Insect Bioconversion",
+    "section": "",
+    "text": "The university has some fantastic researchers and facilities but some times it can be tricky to find the right person to get in touch with. A good place to start is the innovation and entrepreneurship page.\nHere are some great folks to chat to:\nUniservices brings together researchers, investors, businesses, governments and communities to turn research into impact. These are the folks to chat to if you want to connect with the university but aren’t sure where to start. They can help you find the right person to talk to about your project or idea.\nNewmarket Innovation Precinct is The University of Auckland’s research commercialisation and industry collaboration hub. They are located in Newmarket and offer a range of opportunities to collaborate with experts and engineers at the university.\nCentre for Innovation and Entrepreneurship runs numerous programmes and workshops upskilling UoA staff and students in entrepreneurship and innovation. They also have a Start-up Internship programme that connects students with start-ups. On 30th April 2025 there is a Start-up Careers Showcase which is a great opportunity to showcase your venture to students and staff at UoA."
+  },
+  {
+    "objectID": "blog/2025_03_15_bioconversion_workshop/index.html#links-to-opportunities-at-the-university-of-auckland-uoa",
+    "href": "blog/2025_03_15_bioconversion_workshop/index.html#links-to-opportunities-at-the-university-of-auckland-uoa",
+    "title": "University of Auckland Insect Bioconversion",
+    "section": "",
+    "text": "The university has some fantastic researchers and facilities but some times it can be tricky to find the right person to get in touch with. A good place to start is the innovation and entrepreneurship page.\nHere are some great folks to chat to:\nUniservices brings together researchers, investors, businesses, governments and communities to turn research into impact. These are the folks to chat to if you want to connect with the university but aren’t sure where to start. They can help you find the right person to talk to about your project or idea.\nNewmarket Innovation Precinct is The University of Auckland’s research commercialisation and industry collaboration hub. They are located in Newmarket and offer a range of opportunities to collaborate with experts and engineers at the university.\nCentre for Innovation and Entrepreneurship runs numerous programmes and workshops upskilling UoA staff and students in entrepreneurship and innovation. They also have a Start-up Internship programme that connects students with start-ups. On 30th April 2025 there is a Start-up Careers Showcase which is a great opportunity to showcase your venture to students and staff at UoA."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Neil Birrell",
+    "section": "",
+    "text": "Thanks for popping by.\nI’m Neil and I spend a lot of time looking at interesting invertebrates or analysing data.\nSome of my research interests include insects as food and feed, animal behaviour (particularly insect mating systems), and sensory systems. I have recently taken up a fellowship at the University of Auckland investigating the systematics of some of our giant flightless weevils, their ecology and how they are distributed.\nYou can learn more about me here ↣"
+  },
+  {
+    "objectID": "teaching/index.html",
+    "href": "teaching/index.html",
+    "title": "Teaching",
+    "section": "",
+    "text": "Teaching materials from postgraduate courses and workshops I run at the University of Auckland."
+  },
+  {
+    "objectID": "teaching/index.html#postgraduate-r",
+    "href": "teaching/index.html#postgraduate-r",
+    "title": "Teaching",
+    "section": "Postgraduate R",
+    "text": "Postgraduate R\nAn introduction to R for postgraduate students, covering project setup and the core data science workflow: loading, tidying, transforming, and visualising data.\n\n\n\nSlides\nDescription\n\n\n\n\nR for Data Science: The Whole Game\nSet up a project, then work through the whole data science cycle using tidyverse"
+  }
+]
