@@ -1,0 +1,563 @@
+---
+title: "R for Data Science"
+subtitle: "Set up a project, then play the *whole game*: load → tidy → transform → visualise"
+author: "Postgraduate R Tutorial"
+date: today
+format:
+  revealjs:
+    embed-resources: true
+    theme: [default, custom.scss]
+    slide-number: c/t
+    show-slide-number: all
+    incremental: false
+    code-line-numbers: true
+    code-overflow: wrap
+    highlight-style: github
+    footer: "Adapted from *R for Data Science (2e)*, Wickham, Çetinkaya-Rundel & Grolemund — r4ds.hadley.nz"
+    width: 1280
+    height: 760
+    fig-align: center
+execute:
+  echo: true
+  warning: false
+  message: false
+  freeze: auto
+  fig-width: 7
+  fig-height: 4.2
+  dpi: 150
+knitr:
+  opts_chunk:
+    collapse: true
+    comment: "#>"
+---
+
+```{r}
+#| label: setup
+#| include: false
+library(tidyverse)
+library(palmerpenguins)
+theme_set(theme_minimal(base_size = 14))
+options(pillar.print_max = 6, pillar.print_min = 6)
+```
+
+# Welcome {.center}
+
+::: {style="font-size:0.9em"}
+Today we do two things:
+
+1. **Set up a project properly** — folders, paths, and the idea of *tidy data* — so your
+   work is organised and reproducible from day one.
+2. Then play the **whole game** of data science, following data in its natural direction:
+   **load it in → tidy it → transform it → visualise it.**
+:::
+
+::: {.notes}
+This mirrors Part 1 ("Whole game") of R4DS, but reordered around the real workflow: get
+organised first, then move data through the pipeline from import to plot.
+:::
+
+## The data science cycle
+
+> **Import → Tidy → Transform ⇄ Visualise → (Model → Communicate)**
+> ...all sitting inside **Program**.
+
+. . .
+
+We'll follow it left to right today:
+
+- **Set up** — a project structure that keeps everything findable and reproducible.
+- **Import** — get a data file into R.
+- **Tidy** — reshape it into a consistent form.
+- **Transform** — filter, derive variables, summarise by group.
+- **Visualise** — turn the table into a picture. *(We finish here.)*
+
+# Part 1 · Set up your project {.center}
+
+> Get organised *before* you analyse. Future-you will thank present-you.
+
+## Always work in an RStudio Project
+
+An **RStudio Project** (`.Rproj`) bundles everything for one piece of work.
+
+- Open the project and your **working directory is the project folder** — automatically.
+- No more `setwd("C:/Users/neil/Desktop/...")` that breaks on every other machine.
+- Each project gets its own history, and you can have several open at once.
+
+. . .
+
+> Create one with **File → New Project → New Directory**.
+> One project = one paper / thesis chapter / analysis.
+
+::: {.notes}
+The Project is the unit of reproducibility. Everything below assumes you're inside one.
+:::
+
+## A sensible folder structure
+
+```text
+my-analysis/
+├── my-analysis.Rproj      # the project file — open THIS
+├── README.md              # what is this, who, how to run it
+├── data-raw/              # original data — READ-ONLY, never edit by hand
+├── data/                  # cleaned / derived data you generate from data-raw
+├── Code/                  # your analysis scripts (.R) or Quarto docs (.qmd)
+├── output/
+│   ├── figures/           # plots you export
+│   └── tables/            # results tables
+└── renv/                  # optional: a reproducible package library
+```
+
+. . .
+
+Two principles: **raw data is sacred and read-only**; **everything in `output/` is
+regenerable** by re-running your scripts.
+
+## Paths that don't break
+
+```{r}
+#| eval: false
+# Bad — absolute, machine-specific:
+read_csv("C:/Users/neil/Desktop/project/data-raw/palmerpenguins.csv")
+
+# Good — relative to the project root:
+read_csv("data-raw/palmerpenguins.csv")
+
+# Robust — builds the path correctly on any OS / machine:
+library(here)
+read_csv(here("data-raw", "palmerpenguins.csv"))
+```
+
+Because you're in a Project, relative paths just work. `here::here()` makes them
+bullet-proof even from sub-folders.
+
+## Reproducible habits
+
+- Write your analysis in a **script** (`.R`) or **Quarto** (`.qmd`) — not the console — so it's saved and re-runnable.
+- Run a line / selection with **Cmd/Ctrl + Enter**; run the whole file with **Cmd/Ctrl + Shift + Enter**.
+- **Restart R often** (Session → Restart R) and re-run from the top.
+
+. . .
+
+> Turn off "save workspace to .RData": **Tools → Global Options → uncheck "Restore .RData"**.
+> A script that only works because of leftover objects isn't reproducible.
+
+# Part 2 · R foundations {.center}
+
+> The minimum syntax you need before touching data.
+
+## Assignment & naming
+
+```{r}
+#| eval: false
+# Assign with <-   (shortcut: Alt/Option + -)
+mean_mass <- 4200
+
+# Names: lowercase, words separated by _ (snake_case)
+flipper_summary <- 1   # good
+FlipperSummary  <- 1   # avoid
+flipper.summary <- 1   # avoid
+```
+
+- Use `<-` to assign; reserve `=` for arguments inside functions.
+- Nothing prints when you assign — type the object's name to see it.
+
+## Calling functions
+
+```{r}
+seq(from = 1, to = 10, by = 2)
+```
+
+- Functions take **arguments** as `name = value`.
+- First arguments are usually passed by position; name the rest for clarity.
+- `?seq` opens the help page; Tab-completion shows argument names.
+
+::: {.notes}
+Demo tab-completion and matching-parenthesis highlighting. Unclosed quotes/parens give a
+`+` continuation prompt — press Esc to escape.
+:::
+
+## Code style
+
+```{r}
+#| eval: false
+# Spaces around operators and after commas:
+mean(x, na.rm = TRUE)      # good
+mean(x,na.rm=TRUE)         # cramped
+
+# One statement per line; descriptive snake_case names:
+mean_body_mass <- mean(penguins$body_mass_g, na.rm = TRUE)
+```
+
+- Spaces around `<-`, `==`, `+`, `*`; a space after every comma.
+- The **{styler}** package reformats code automatically; **{lintr}** flags problems.
+
+> Code is read far more often than written — including by you, in six months.
+
+# Part 3 · Tidy data {.center}
+
+> The shape we're aiming for. Get here and everything downstream is easy.
+
+## The three rules of tidy data
+
+::: {.cols}
+::: {.col}
+1. Each **variable** is a column.
+2. Each **observation** is a row.
+3. Each **value** is a cell.
+:::
+::: {.col}
+For us: **one row per specimen**, one column per measured trait, with `species`, `site`,
+and `sex` as their own columns.
+
+Tidy data is what `dplyr`, `ggplot2` and most models expect. Field data rarely arrives
+this way — Part 4 shows how to get it there.
+:::
+:::
+
+# The whole game {.center}
+
+> **Import → Tidy → Transform → Visualise.** Now we run real data through it.
+
+## Import: `read_csv()`
+
+```{r}
+#| eval: false
+library(tidyverse)
+
+penguins <- read_csv("data-raw/palmerpenguins.csv")
+```
+
+. . .
+
+`readr::read_csv()` gives you:
+
+- a **tibble** (a tidy-friendly data frame),
+- automatic **column-type guessing**, printed so you can check it,
+- handy arguments: `na = c("", "NA", "-999")`, `skip =`, `col_types =` to override guesses.
+
+> Always eyeball the type report and first rows — silent mis-typing is the #1 import bug.
+
+## Other importers
+
+| Format | Function | Package |
+|---|---|---|
+| `.csv` / delimited | `read_csv()`, `read_delim()` | readr |
+| Excel `.xlsx` | `read_excel()` | readxl |
+| `.rds` (one R object) | `read_rds()` | readr |
+| SPSS / Stata / SAS | `read_sav()`, `read_dta()` | haven |
+
+## Meet the data
+
+We'll use **morphometric data** — measurements across species and sites. Once loaded:
+
+```{r}
+penguins
+```
+
+## A first look
+
+```{r}
+glimpse(penguins)
+```
+
+`glimpse()` is your first move on any new dataset: every column, its type, and a peek at
+the values.
+
+## Tidy in practice: a messy table
+
+Field data often arrives **wide** — species as column headers:
+
+```{r}
+counts_wide <- tribble(
+  ~site,   ~Adelie, ~Gentoo, ~Chinstrap,
+  "North",      12,      30,          5,
+  "South",      18,      22,          9
+)
+counts_wide
+```
+
+`species` is a *variable* trapped in the *headers* — not tidy.
+
+## `pivot_longer()` to the rescue
+
+```{r}
+#| code-line-numbers: "2-5"
+counts_long <- counts_wide |>
+  pivot_longer(
+    cols      = -site,
+    names_to  = "species",
+    values_to = "count"
+  )
+counts_long
+```
+
+Now `species` and `count` are proper columns — ready to group, plot, model.
+(`pivot_wider()` does the reverse.)
+
+## Transform: the pipe `|>`
+
+The pipe passes the result on the left into the first argument on the right.
+
+```{r}
+#| eval: false
+# Nested (hard to read):
+summarise(group_by(filter(penguins, !is.na(sex)), species), n = n())
+
+# Piped (read top to bottom):
+penguins |>
+  filter(!is.na(sex)) |>
+  group_by(species) |>
+  summarise(n = n())
+```
+
+> Read `|>` as **"and then"** — it turns nested calls into a readable recipe.
+
+## `filter()` — keep rows
+
+```{r}
+penguins |>
+  filter(species == "Adelie", body_mass_g > 4000)
+```
+
+Operators: `==  !=  <  >  <=  >=  &  |  %in%`, plus `is.na()`.
+
+## `arrange()` & `select()`
+
+::: {.cols}
+::: {.col}
+**Reorder rows**
+```{r}
+penguins |>
+  arrange(desc(body_mass_g)) |>
+  select(species, body_mass_g)
+```
+:::
+::: {.col}
+**Pick columns**
+```{r}
+penguins |>
+  select(species, island, sex)
+```
+:::
+:::
+
+## `mutate()` — create variables
+
+```{r}
+#| code-line-numbers: "2-3"
+penguins |>
+  mutate(
+    mass_kg    = body_mass_g / 1000,
+    bill_ratio = bill_length_mm / bill_depth_mm
+  ) |>
+  select(species, mass_kg, bill_ratio)
+```
+
+Where derived morphometrics live — ratios, indices, log-transforms for allometry.
+
+## `group_by()` + `summarise()`
+
+The workhorse for "compute something per species / site / treatment":
+
+```{r}
+penguins |>
+  group_by(species, sex) |>
+  summarise(
+    n         = n(),
+    mean_mass = mean(body_mass_g, na.rm = TRUE),
+    sd_mass   = sd(body_mass_g, na.rm = TRUE),
+    .groups   = "drop"
+  )
+```
+
+::: {.notes}
+Flag na.rm = TRUE — one NA poisons the mean otherwise. .groups = "drop" avoids the
+"still grouped" surprise downstream.
+:::
+
+# Visualise {.center}
+
+> The payoff. We finish the game by turning data into pictures.
+
+## The grammar of graphics
+
+Every ggplot is built from the same pieces:
+
+```r
+ggplot(data = <DATA>) +
+  geom_<TYPE>(mapping = aes(<MAPPINGS>))
+```
+
+. . .
+
+- **data** — the data frame.
+- **aes()** — *aesthetic mappings*: which variable maps to x, y, colour, shape…
+- **geom_** — the geometric object representing the data (points, lines, bars…).
+- Layers are added with **`+`**.
+
+## A first plot
+
+```{r}
+#| label: first-plot
+#| output-location: column-fragment
+#| fig-width: 5.4
+#| fig-height: 4.6
+ggplot(
+  data = penguins,
+  mapping = aes(x = flipper_length_mm,
+                y = body_mass_g)
+) +
+  geom_point()
+```
+
+::: {.notes}
+Build it live: ggplot(penguins) -> blank canvas, add aes, then geom_point. A blank grey
+panel is "correct" until you add a geom.
+:::
+
+## Map a variable to colour
+
+```{r}
+#| label: colour-plot
+#| output-location: column-fragment
+#| fig-width: 5.4
+#| fig-height: 4.6
+#| code-line-numbers: "4"
+ggplot(
+  penguins,
+  aes(x = flipper_length_mm,
+      y = body_mass_g,
+      colour = species)
+) +
+  geom_point()
+```
+
+Anything that should respond to the data goes **inside `aes()`**.
+
+## Set vs. map
+
+Want one fixed colour? **Set** it *outside* `aes()`:
+
+```{r}
+#| label: set-aes
+#| output-location: column-fragment
+#| fig-width: 5.4
+#| fig-height: 4.6
+#| code-line-numbers: "2"
+ggplot(penguins, aes(flipper_length_mm, body_mass_g)) +
+  geom_point(colour = "steelblue", alpha = 0.7)
+```
+
+> **Map** = a variable controls it (inside `aes()`). **Set** = fixed constant (outside `aes()`).
+
+## Add a model layer
+
+```{r}
+#| label: smooth-plot
+#| output-location: column-fragment
+#| fig-width: 5.4
+#| fig-height: 4.6
+#| code-line-numbers: "7"
+ggplot(
+  penguins,
+  aes(x = flipper_length_mm,
+      y = body_mass_g,
+      colour = species)
+) +
+  geom_point() +
+  geom_smooth(method = "lm")
+```
+
+One trend line **per group**, because `colour` is mapped globally.
+
+## Facets — small multiples
+
+```{r}
+#| label: facet
+#| fig-width: 9
+#| fig-height: 3.6
+ggplot(penguins, aes(flipper_length_mm, body_mass_g, colour = species)) +
+  geom_point() +
+  facet_wrap(~ island)
+```
+
+`facet_wrap(~ var)` splits one plot into a panel per level — ideal for sites / treatments.
+
+## Putting it together
+
+The whole game in one piped pipeline, ending in a plot:
+
+```{r}
+#| label: capstone
+#| fig-width: 8
+#| fig-height: 3.3
+penguins |>                                   # import (loaded earlier)
+  filter(!is.na(body_mass_g), !is.na(sex)) |> # transform: drop missing
+  mutate(mass_kg = body_mass_g / 1000) |>     # transform: derive variable
+  group_by(species, sex) |>                   # transform: group
+  summarise(mean_kg = mean(mass_kg), .groups = "drop") |>
+  ggplot(aes(species, mean_kg, fill = sex)) + # visualise
+  geom_col(position = "dodge") +
+  labs(x = NULL, y = "Mean mass (kg)", fill = "Sex")
+```
+
+# Wrap up {.center}
+
+## What we covered
+
+::: {.cols}
+::: {.col}
+**Set-up & foundations**
+
+- RStudio Projects + folder structure
+- Relative paths / `here()`
+- Assignment, naming, functions, style
+- Tidy data: the 3 rules
+:::
+::: {.col}
+**The whole game**
+
+- `read_csv()` and friends
+- `pivot_longer()` → tidy
+- dplyr: filter / arrange / select / mutate / summarise + `|>`
+- ggplot2: aes, geoms, set vs map, facets
+:::
+:::
+
+## Your turn — exercises
+
+1. Make a project folder for a small analysis with `data-raw/`, `data/`, `R/`, and `output/figures/`.
+2. Read **one of your own CSVs** with `read_csv()`, check the column types, and `glimpse()` it.
+3. Compute the number of specimens and mean body mass **per island** (`group_by` + `summarise`).
+4. Plot `bill_length_mm` vs `bill_depth_mm`, colour by `species`, add `geom_smooth(method = "lm")`. Then facet by species — what changes? *(Simpson's paradox!)*
+
+::: {.muted .small}
+Bonus: take a wide spreadsheet from your own work and tidy it with `pivot_longer()`.
+:::
+
+## Getting unstuck
+
+- **`?function`** — the help page (the Examples section is gold).
+- **`vignette("dplyr")`** — narrative, worked guides for a package.
+- Google the **exact error message**; Posit Community & Stack Overflow `[r]` `[tidyverse]`.
+- Make a **reprex** with the **{reprex}** package before asking — you'll often solve it yourself.
+
+## Where to go next
+
+- 📖 **R for Data Science (2e)** — free: [r4ds.hadley.nz](https://r4ds.hadley.nz)
+- 🧾 **Posit cheatsheets** — ggplot2, dplyr, tidyr: [posit.co/resources/cheatsheets](https://posit.co/resources/cheatsheets)
+- 🐞 For ecology, pair these with `{vegan}`, `{lme4}`/`{glmmTMB}`, `{DHARMa}`
+
+. . .
+
+> The whole game is just this loop, run over and over:
+> **import → tidy → transform ⇄ visualise.** Everything else is depth.
+
+## Thank you {.center}
+
+Questions?
+
+::: {.muted .small}
+Slides built with Quarto + reveal.js. Source: `whole-game.qmd`.
+Content adapted from *R for Data Science (2e)* (CC BY-NC-ND).
+:::

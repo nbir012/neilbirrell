@@ -18,6 +18,9 @@ website:
       - text: Media
         aria-label: "Media appearances"
         href: media/index.qmd      
+      - text: Teaching
+        aria-label: "Teaching materials"
+        href: teaching/index.qmd
       - text: About 
         aria-label: "About Me"
         href: about/index.qmd

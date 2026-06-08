@@ -1,0 +1,16 @@
+---
+title: "Teaching"
+description: "Course materials and slides"
+toc: false
+---
+
+Teaching materials from postgraduate courses and workshops I run at the University of Auckland.
+
+## Postgraduate R
+
+An introduction to R for postgraduate students, covering project setup and the core data science workflow: loading, tidying, transforming, and visualising data.
+
+| Slides | Description |
+|--------|-------------|
+| [R for Data Science: The Whole Game](postgrad-r/whole-game.html) | Set up a project, then work through the whole data science cycle using `tidyverse` |
+

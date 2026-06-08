@@ -1,0 +1,82 @@
+/*-- scss:defaults --*/
+
+// Entomology / field-ecology flavoured palette
+$body-bg:        #fbfaf6;   // warm paper
+$body-color:     #232826;   // near-black ink
+$link-color:     #1f6f54;   // beetle green
+$selection-bg:   #d9b310;   // amber
+
+$presentation-heading-color: #14463a;   // deep forest
+$presentation-heading-font: "Source Sans Pro", "Helvetica Neue", sans-serif;
+$font-family-sans-serif: "Source Sans Pro", "Helvetica Neue", sans-serif;
+$presentation-font-size-root: 30px;
+
+// Light code blocks to match the (light) github highlight style.
+// A dark $code-block-bg with a light-background highlight theme makes
+// tokens nearly invisible — keep these in sync.
+$code-block-bg:  #f4f2ea;   // warm paper tint
+$code-color:     #232826;   // dark ink for un-highlighted text
+
+/*-- scss:rules --*/
+
+.reveal h1, .reveal h2, .reveal h3 {
+  letter-spacing: -0.01em;
+  font-weight: 700;
+}
+
+// Section divider slides
+.reveal .slide-background.title-slide,
+.reveal section.title-slide {
+  background-color: #14463a;
+}
+
+// A coloured rule under the title
+.reveal h2 {
+  border-bottom: 3px solid #d9b310;
+  padding-bottom: 0.2em;
+  margin-bottom: 0.5em;
+}
+
+// Inline code
+.reveal code:not(.sourceCode) {
+  color: #1f6f54;
+  background: #eef2ee;
+  padding: 0.05em 0.3em;
+  border-radius: 4px;
+}
+
+// Callout-ish emphasis boxes via blockquote
+.reveal blockquote {
+  border-left: 5px solid #d9b310;
+  background: #f3f1e7;
+  padding: 0.5em 0.8em;
+  font-style: normal;
+  width: 100%;
+}
+
+// Smaller code in slides so chunks fit
+.reveal pre code {
+  font-size: 0.78em;
+  line-height: 1.35;
+}
+
+// Give the (now light) code blocks a subtle frame so they read
+// as distinct panels on the warm-paper background.
+.reveal pre {
+  border: 1px solid #d9d6c8;
+  border-radius: 6px;
+  box-shadow: none;
+}
+
+// Footer / credit
+.reveal .footer {
+  color: #6b716c;
+  font-size: 0.5em;
+}
+
+// Two-column helper
+.cols { display: flex; gap: 1.2em; }
+.col  { flex: 1; }
+
+.small { font-size: 0.75em; }
+.muted { color: #6b716c; }

@@ -5,3 +5,9 @@
 
 /.quarto/
 /images/ignore/
+
+**/*.quarto_ipynb
+_site/
+site/sitelibs/
+_freeze/sitelibs/
+freeze/sitelibs/
